@@ -1,0 +1,39 @@
+$primary: #43B7B8;
+$secondary: #436AAC;
+$tertiary: #8929AD;
+$success: #44DF6F;
+$warn: #DFB444;
+$danger: #DF4444;
+$info: #4466DF;
+
+$white: #FFFFFF;
+$light: #F6F6F6;
+$grey: #828282;
+$dark: #323232;
+
+.back{
+  &-primary {
+    background-color: $primary !important;
+  }
+  &-secondary {
+    background-color: $secondary !important;
+  }
+  &-tertiary {
+    background-color: $secondary !important;
+  }
+  &-light {
+    background-color: $light !important;
+  }
+  &-grey {
+    background-color: $grey !important;
+  }
+  &-white {
+    background-color: $white !important;
+  }
+  &-dark {
+    background-color: $dark !important;
+  }
+  &-gradient {
+    background: linear-gradient(70deg, $primary, $secondary, $tertiary) !important
+  }
+}

@@ -1,0 +1,303 @@
+.btn {
+  &-primary {
+    @extend .back-primary;
+    @extend .color-white;
+    border: 1px solid $primary !important;
+  }
+
+  &-secondary {
+    @extend .back-secondary;
+    @extend .color-white;
+    border: 1px solid $secondary !important;
+    }
+
+  &-tertiary {
+    @extend .back-tertiary;
+    @extend .color-white;
+    border: 1px solid $tertiary !important;
+    }
+
+  &-danger {
+    background-color: $danger;
+    @extend .color-white;
+    border: 1px solid $danger !important;
+    }
+
+  &-warn {
+    background-color: $warn;
+    @extend .color-white;
+    border: 1px solid $warn !important;
+    }
+
+  &-info {
+    background-color: $info;
+    @extend .color-white;
+    border: 1px solid $info !important;
+    }
+
+  &-success {
+    background-color: $success;
+    @extend .color-white;
+    border: 1px solid $success !important;
+    }
+
+  &-gradient {
+    @extend .back-gradient;
+    @extend .color-white;
+    border: 1px solid $gradient !important;
+    }
+
+  &-light {
+    @extend .back-light;
+    @extend .color-white;
+    border: 1px solid $light !important;
+    }
+
+  &-gray {
+    @extend .back-gray;
+    @extend .color-white;
+    border: 1px solid $gray !important;
+    }
+
+  &-white {
+    @extend .back-white;
+    @extend .color-white;
+    border: 1px solid $white !important;
+    }
+
+  &-dark {
+    @extend .back-dark;
+    @extend .color-white;
+    border: 1px solid $dark !important;
+    }
+
+  &{
+    &-primary:hover {
+      @extend .back-white;
+      @extend .color-primary;
+      border: 1px solid $primary !important;
+    }
+
+    &-secondary:hover {
+      @extend .back-white;
+      @extend .back-secondary;
+      border: 1px solid $secondary !important;
+    }
+
+    &-tertiary:hover {
+      @extend .back-white;
+      @extend .back-tertiary;
+      border: 1px solid $tertiary !important;
+    }
+
+    &-danger:hover {
+      @extend .back-white;
+      background-color: $danger;
+      border: 1px solid $danger !important;
+    }
+
+    &-warn:hover {
+      @extend .back-white;
+      background-color: $warn;
+      border: 1px solid $warn !important;
+    }
+
+    &-info:hover {
+      @extend .back-white;
+      background-color: $info;
+      border: 1px solid $info !important;
+    }
+
+    &-success:hover {
+      @extend .back-white;
+      background-color: $success;
+      border: 1px solid $success !important;
+    }
+
+    &-gradient:hover {
+      @extend .back-white;
+      @extend .back-gradient;
+      border: 1px solid $gradient !important;
+    }
+
+    &-light:hover {
+      @extend .back-white;
+      @extend .back-light;
+      border: 1px solid $light !important;
+    }
+
+    &-gray:hover {
+      @extend .back-white;
+      @extend .back-gray;
+      border: 1px solid $gray !important;
+    }
+
+    &-white:hover {
+      @extend .back-white;
+      @extend .back-white;
+      border: 1px solid $white !important;
+    }
+
+    &-dark:hover {
+      @extend .back-white;
+      @extend .back-dark;
+      border: 1px solid $dark !important;
+    }
+  }
+
+  &-outline {
+
+    &-primary {
+      @extend .back-white;
+      @extend .color-primary;
+      border: 1px solid $primary !important;
+    }
+
+    &-secondary {
+      @extend .back-white;
+      @extend .back-secondary;
+      border: 1px solid $secondary !important;
+    }
+
+    &-tertiary {
+      @extend .back-white;
+      @extend .back-tertiary;
+      border: 1px solid $tertiary !important;
+    }
+
+    &-danger {
+      @extend .back-white;
+      background-color: $danger;
+      border: 1px solid $danger !important;
+    }
+
+    &-warn {
+      @extend .back-white;
+      background-color: $warn;
+      border: 1px solid $warn !important;
+    }
+
+    &-info {
+      @extend .back-white;
+      background-color: $info;
+      border: 1px solid $info !important;
+    }
+
+    &-success {
+      @extend .back-white;
+      background-color: $success;
+      border: 1px solid $success !important;
+    }
+
+    &-gradient {
+      @extend .back-white;
+      @extend .back-gradient;
+      border: 1px solid $gradient !important;
+    }
+
+    &-light {
+      @extend .back-white;
+      @extend .back-light;
+      border: 1px solid $light !important;
+    }
+
+    &-gray {
+      @extend .back-white;
+      @extend .back-gray;
+      border: 1px solid $gray !important;
+    }
+
+    &-white {
+      @extend .back-white;
+      @extend .back-white;
+      border: 1px solid $white !important;
+    }
+
+    &-dark {
+      @extend .back-white;
+      @extend .back-dark;
+      border: 1px solid $dark !important;
+    }
+
+    & {
+      &-primary:hover {
+        @extend .back-primary;
+        @extend .color-white;
+        border: 1px solid $primary !important;
+      }
+
+      &-secondary:hover {
+        @extend .back-secondary;
+        @extend .color-white;
+        border: 1px solid $secondary !important;
+      }
+
+      &-tertiary:hover {
+        @extend .back-tertiary;
+        @extend .color-white;
+        border: 1px solid $tertiary !important;
+      }
+
+      &-danger:hover {
+        background-color: $danger;
+        @extend .color-white;
+        border: 1px solid $danger !important;
+      }
+
+      &-warn:hover {
+        background-color: $warn;
+        @extend .color-white;
+        border: 1px solid $warn !important;
+      }
+
+      &-info:hover {
+        background-color: $info;
+        @extend .color-white;
+        border: 1px solid $info !important;
+      }
+
+      &-success:hover {
+        background-color: $success;
+        @extend .color-white;
+        border: 1px solid $success !important;
+      }
+
+      &-gradient:hover {
+        @extend .back-gradient;
+        @extend .color-white;
+        border: 1px solid $gradient !important;
+      }
+
+      &-light:hover {
+        @extend .back-light;
+        @extend .color-white;
+        border: 1px solid $light !important;
+      }
+
+      &-gray:hover {
+        @extend .back-gray;
+        @extend .color-white;
+        border: 1px solid $gray !important;
+      }
+
+      &-white:hover {
+        @extend .back-white;
+        @extend .color-white;
+        border: 1px solid $white !important;
+      }
+
+      &-dark:hover {
+        @extend .back-dark;
+        @extend .color-white;
+        border: 1px solid $dark !important;
+      }
+    }
+  }
+}
+
+.btn-xl {
+  height: 56px;
+  width: auto;
+  font-size: 24px;
+  padding: 0 56px !important;
+}

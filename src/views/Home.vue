@@ -1,7 +1,20 @@
 <template>
   <div>
     <navbar :fixed="'top'"></navbar>
-    <div class="home"></div>
+    <div class="home">
+      <img class="mar-t-14" src="../assets/images/logo-white.png"/>
+      <div class="row mar-t-16">
+        <p class="offset-2 col-8 text-center color-white">Le site de monitoring d’entreprise spécialement consue pour les PME et les auto-entrepreneurs.
+          Un outil ergonomique et facile a prendre en main. Renseignez vos client et vos missions pour un suivi centralisé.
+          Suivre l’évolution de votre entreprise n’aura jamais été aussi simple !</p>
+      </div>
+      <div class="row mar-t-16">
+        <div class="offset-2 col-8">
+          <button class="btn btn-xl btn-outline-primary">Connexion</button>
+          <button class="btn btn-xl btn-primary ml-5">Inscription</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

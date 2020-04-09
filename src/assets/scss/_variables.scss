@@ -8,8 +8,10 @@ $info: #4466DF;
 
 $white: #FFFFFF;
 $light: #F6F6F6;
-$grey: #828282;
+$gray: #828282;
 $dark: #323232;
+
+$gradient: linear-gradient(70deg, $primary, $secondary, $tertiary);
 
 .back{
   &-primary {
@@ -24,8 +26,8 @@ $dark: #323232;
   &-light {
     background-color: $light !important;
   }
-  &-grey {
-    background-color: $grey !important;
+  &-gray {
+    background-color: $gray !important;
   }
   &-white {
     background-color: $white !important;
@@ -34,6 +36,6 @@ $dark: #323232;
     background-color: $dark !important;
   }
   &-gradient {
-    background: linear-gradient(70deg, $primary, $secondary, $tertiary) !important
+    background: $gradient !important
   }
 }

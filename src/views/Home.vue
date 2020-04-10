@@ -2,7 +2,7 @@
   <div>
     <navbar :fixed="'top'"></navbar>
     <div class="home">
-      <img class="mar-t-14" src="../assets/images/logo-white.png" />
+      <img class="mar-t-14" src="../assets/images/logo-white.png"/>
       <div class="row mar-t-16">
         <p class="offset-2 col-8 text-center color-white fs-16">
           Le site de monitoring d’entreprise spécialement consue pour les PME et
@@ -15,7 +15,9 @@
       <div class="row mar-t-16">
         <div class="offset-2 col-8">
           <button class="btn btn-xl btn-outline-primary">Connexion</button>
-          <button class="btn btn-xl btn-outline-primary ml-5">Inscription</button>
+          <button class="btn btn-xl btn-outline-primary ml-5">
+            Inscription
+          </button>
         </div>
       </div>
       <h1 class="color-black mar-t-42">Notre solution</h1>
@@ -61,11 +63,27 @@
       <h1 class="color-white mar-t-23">Nos prix</h1>
       <div class="row mar-t-6">
         <div class="offset-2 col-8">
-          <button class="btn btn-lg" v-on:click="priceByMonth = true" :class="priceByMonth ? 'btn-primary' : 'btn-outline-primary'">Mois</button>
-          <button class="btn btn-lg ml-5" v-on:click="priceByMonth = false" :class="!priceByMonth ? 'btn-primary' : 'btn-outline-primary'">Année</button>
+          <button
+            class="btn btn-lg"
+            v-on:click="priceByMonth = true"
+            :class="priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
+          >
+            Mois
+          </button>
+          <button
+            class="btn btn-lg ml-5"
+            v-on:click="priceByMonth = false"
+            :class="!priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
+          >
+            Année
+          </button>
         </div>
       </div>
-      <div v-if="priceByMonth" id="price-month" class="d-flex justify-content-center mar-t-8 pad-b-8">
+      <div
+        v-if="priceByMonth"
+        id="price-month"
+        class="d-flex justify-content-center mar-t-8 pad-b-8"
+      >
         <div class="card-layout card-price">
           <h3>Auto-entrepreneur</h3>
           <div>
@@ -99,7 +117,11 @@
           </div>
         </div>
       </div>
-      <div v-else id="price-year" class="d-flex justify-content-center mar-t-8 pad-b-8">
+      <div
+        v-else
+        id="price-year"
+        class="d-flex justify-content-center mar-t-8 pad-b-8"
+      >
         <div class="card-layout card-price">
           <h3>Auto-entrepreneur</h3>
           <div>
@@ -143,7 +165,7 @@ import Navbar from "@/components/navbar";
 
 export default {
   name: "Home",
-  components: { Navbar },
+  components: {Navbar},
   data: () => {
     return {
       height: window.innerHeight,
@@ -164,36 +186,47 @@ export default {
     handleScroll(event) {
       const navbar = document.getElementById("navbar");
 
-      if (event.path[1].pageYOffset >= this.height) {
+      if (event.path[1].pageYOffset >= this.height - 100) {
         navbar.classList.remove("d-none");
+        if (event.path[1].pageYOffset >= this.height - 100 && event.path[1].pageYOffset <= this.height) {
+          const pourcentage = this.getPourcentage(
+            (event.path[1].pageYOffset - this.height)
+          );
+          console.log("ici", pourcentage + 100);
+          navbar.style.backgroundColor = "red";
+          navbar.style.opacity = (pourcentage + 100) / 100;
+        }
       } else {
         navbar.classList.add("d-none");
       }
+    },
+    getPourcentage(number) {
+      return number / 1.2;
     }
   }
 };
 </script>
 
 <style scoped type="scss">
-.home {
-  //height: 2300px;
-  background: url("../assets/images/bg-top-home.png") no-repeat top center,
+  .home {
+    //height: 2300px;
+    background: url("../assets/images/bg-top-home.png") no-repeat top center,
     url("../assets/images/bg-bottom-home.png") no-repeat bottom center;
-  background-size: contain;
-}
+    background-size: contain;
+  }
 
-.card-info {
-  width: 20%;
-  height: 400px;
-}
+  .card-info {
+    width: 20%;
+    height: 400px;
+  }
 
-.card-price {
-  width: 25%;
-  margin: 0 2%;
-  height: 400px;
-}
+  .card-price {
+    width: 25%;
+    margin: 0 2%;
+    height: 400px;
+  }
 
-.btn.btn-lg {
-  width: 15%;
-}
+  .btn.btn-lg {
+    width: 15%;
+  }
 </style>

@@ -188,14 +188,12 @@ export default {
 
       if (event.path[1].pageYOffset >= this.height - 100) {
         navbar.classList.remove("d-none");
-        if (event.path[1].pageYOffset >= this.height - 100 && event.path[1].pageYOffset <= this.height) {
-          const pourcentage = this.getPourcentage(
-            (event.path[1].pageYOffset - this.height)
-          );
-          console.log("ici", pourcentage + 100);
-          navbar.style.backgroundColor = "red";
-          navbar.style.opacity = (pourcentage + 100) / 100;
-        }
+        const pourcentage = this.getPourcentage(
+          (event.path[1].pageYOffset - this.height)
+        );
+        console.log("ici", pourcentage + 100);
+        navbar.style.backgroundColor = "red";
+        navbar.style.opacity = (pourcentage + 100) / 100;
       } else {
         navbar.classList.add("d-none");
       }

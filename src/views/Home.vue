@@ -14,10 +14,10 @@
       </div>
       <div class="row mar-t-16">
         <div class="offset-2 col-8">
-          <button class="btn btn-xl btn-outline-primary">Connexion</button>
-          <button class="btn btn-xl btn-outline-primary ml-5">
+          <router-link tag="button" to="/connexion" class="btn btn-xl btn-outline-primary">Connexion</router-link>
+          <router-link tag="button" to="/connexion" class="btn btn-xl btn-outline-primary ml-5">
             Inscription
-          </button>
+          </router-link>
         </div>
       </div>
       <h1 class="color-black mar-t-42">Notre solution</h1>
@@ -188,14 +188,12 @@ export default {
 
       if (event.path[1].pageYOffset >= this.height - 100) {
         navbar.classList.remove("d-none");
-        if (event.path[1].pageYOffset >= this.height - 100 && event.path[1].pageYOffset <= this.height) {
-          const pourcentage = this.getPourcentage(
-            (event.path[1].pageYOffset - this.height)
-          );
-          console.log("ici", pourcentage + 100);
-          navbar.style.backgroundColor = "red";
-          navbar.style.opacity = (pourcentage + 100) / 100;
-        }
+        const pourcentage = this.getPourcentage(
+          (event.path[1].pageYOffset - this.height)
+        );
+        console.log("ici", pourcentage + 100);
+        navbar.style.backgroundColor = "red";
+        navbar.style.opacity = (pourcentage + 100) / 100;
       } else {
         navbar.classList.add("d-none");
       }
@@ -207,9 +205,8 @@ export default {
 };
 </script>
 
-<style scoped type="scss">
+<style scoped lang="scss">
   .home {
-    //height: 2300px;
     background: url("../assets/images/bg-top-home.png") no-repeat top center,
     url("../assets/images/bg-bottom-home.png") no-repeat bottom center;
     background-size: contain;

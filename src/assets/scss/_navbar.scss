@@ -13,5 +13,8 @@
       @extend .back-primary;
       @extend .color-white;
     }
+    &:focus {
+      box-shadow: none !important;
+    }
   }
 }

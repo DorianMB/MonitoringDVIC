@@ -1,7 +1,161 @@
 <template>
   <div>
     <navbar :fixed="'top'"></navbar>
-    <div class="home"></div>
+    <div class="home">
+      <img class="mar-t-14" src="../assets/images/logo-white.png"/>
+      <div class="row mar-t-16">
+        <p class="offset-2 col-8 text-center color-white fs-16">
+          Le site de monitoring d’entreprise spécialement consue pour les PME et
+          les auto-entrepreneurs. Un outil ergonomique et facile a prendre en
+          main. Renseignez vos client et vos missions pour un suivi centralisé.
+          Suivre l’évolution de votre entreprise n’aura jamais été aussi simple
+          !
+        </p>
+      </div>
+      <div class="row mar-t-16">
+        <div class="offset-2 col-8">
+          <button class="btn btn-xl btn-outline-primary">Connexion</button>
+          <button class="btn btn-xl btn-outline-primary ml-5">
+            Inscription
+          </button>
+        </div>
+      </div>
+      <h1 class="color-black mar-t-42">Notre solution</h1>
+      <div class="d-flex justify-content-center mar-t-8">
+        <div class="card-layout card-info">
+          <img
+            src="../assets/images/card-company.jpeg"
+            class="img-fluid img-card-top"
+          />
+          <h2>Entreprises</h2>
+          <p class="text-center">
+            PME ou auto-entrepreuneur, cette solution est faites pour vous !
+            Enregistrer vos missions et vos clients dans une seule applications
+            pour centraliser le suivis de votre entreprise
+          </p>
+        </div>
+        <div class="card-layout card-info">
+          <img
+            src="../assets/images/card-stats.jpeg"
+            class="img-fluid img-card-top"
+          />
+          <h2>Statistiques</h2>
+          <p class="text-center">
+            Graces aux statistiques fournis par Easy Monitoring, il n’aura
+            jamais été aussi simple de suivre l’évolution de votre entreprise.
+            Suivez vos missions, vos dépenses et vos rentrés d’argents a tout
+            moment.
+          </p>
+        </div>
+        <div class="card-layout card-info">
+          <img
+            src="../assets/images/card-money.jpeg"
+            class="img-fluid img-card-top"
+          />
+          <h2>Essaie gratuit</h2>
+          <p class="text-center">
+            En plus d’être un outils ergonomiques et simple d’utilisation, Easy
+            Monitoring est très abordable. Venez tester notre solution, le
+            premier mois est gratuit !
+          </p>
+        </div>
+      </div>
+      <h1 class="color-white mar-t-23">Nos prix</h1>
+      <div class="row mar-t-6">
+        <div class="offset-2 col-8">
+          <button
+            class="btn btn-lg"
+            v-on:click="priceByMonth = true"
+            :class="priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
+          >
+            Mois
+          </button>
+          <button
+            class="btn btn-lg ml-5"
+            v-on:click="priceByMonth = false"
+            :class="!priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
+          >
+            Année
+          </button>
+        </div>
+      </div>
+      <div
+        v-if="priceByMonth"
+        id="price-month"
+        class="d-flex justify-content-center mar-t-8 pad-b-8"
+      >
+        <div class="card-layout card-price">
+          <h3>Auto-entrepreneur</h3>
+          <div>
+            <span class="color-primary fs-50">25</span>
+            <span class="color-black fs-24"> € </span>
+            <span class="color-secondary fs-14">/ mois</span>
+          </div>
+          <div class="text-center">
+            <p><b>1</b> Compte gérant</p>
+            <p><b>5</b> Clients par mois</p>
+            <p>ou</p>
+            <p><b>25</b> Missions par mois</p>
+            <p><b>24/7</b> Support</p>
+            <p><b>1</b> mois gratuit</p>
+          </div>
+        </div>
+        <div class="card-layout card-price">
+          <h3>PME</h3>
+          <div>
+            <span class="color-primary fs-50">100</span>
+            <span class="color-black fs-24"> € </span>
+            <span class="color-secondary fs-14">/ mois</span>
+          </div>
+          <div class="text-center">
+            <p><b>2</b> Compte gérant</p>
+            <p><b>15</b> Clients par mois</p>
+            <p>ou</p>
+            <p><b>60</b> Missions par mois</p>
+            <p><b>24/7</b> Support</p>
+            <p><b>1</b> mois gratuit</p>
+          </div>
+        </div>
+      </div>
+      <div
+        v-else
+        id="price-year"
+        class="d-flex justify-content-center mar-t-8 pad-b-8"
+      >
+        <div class="card-layout card-price">
+          <h3>Auto-entrepreneur</h3>
+          <div>
+            <span class="color-primary fs-50">300</span>
+            <span class="color-black fs-24"> € </span>
+            <span class="color-secondary fs-14">/ année</span>
+          </div>
+          <div class="text-center">
+            <p><b>1</b> Compte gérant</p>
+            <p><b>75</b> Clients par année</p>
+            <p>ou</p>
+            <p><b>300</b> Missions par année</p>
+            <p><b>24/7</b> Support</p>
+            <p><b>1</b> mois gratuit</p>
+          </div>
+        </div>
+        <div class="card-layout card-price">
+          <h3>PME</h3>
+          <div>
+            <span class="color-primary fs-50">1200</span>
+            <span class="color-black fs-24"> € </span>
+            <span class="color-secondary fs-14">/ année</span>
+          </div>
+          <div class="text-center">
+            <p><b>2</b> Compte gérant</p>
+            <p><b>200</b> Clients par année</p>
+            <p>ou</p>
+            <p><b>1000</b> Missions par année</p>
+            <p><b>24/7</b> Support</p>
+            <p><b>1</b> mois gratuit</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -11,10 +165,11 @@ import Navbar from "@/components/navbar";
 
 export default {
   name: "Home",
-  components: { Navbar },
+  components: {Navbar},
   data: () => {
     return {
-      height: window.innerHeight
+      height: window.innerHeight,
+      priceByMonth: true
     };
   },
   created() {
@@ -31,22 +186,47 @@ export default {
     handleScroll(event) {
       const navbar = document.getElementById("navbar");
 
-      if (event.path[1].pageYOffset >= this.height) {
+      if (event.path[1].pageYOffset >= this.height - 100) {
         navbar.classList.remove("d-none");
+        if (event.path[1].pageYOffset >= this.height - 100 && event.path[1].pageYOffset <= this.height) {
+          const pourcentage = this.getPourcentage(
+            (event.path[1].pageYOffset - this.height)
+          );
+          console.log("ici", pourcentage + 100);
+          navbar.style.backgroundColor = "red";
+          navbar.style.opacity = (pourcentage + 100) / 100;
+        }
       } else {
         navbar.classList.add("d-none");
       }
+    },
+    getPourcentage(number) {
+      return number / 1.2;
     }
   }
 };
 </script>
 
-<style scoped>
-.home {
-  height: 3000px;
-  background: url("../assets/images/bg-top-home.png") no-repeat top center,
-  url("../assets/images/bg-bottom-home.png") no-repeat bottom center;
-  background-size: contain;
+<style scoped type="scss">
+  .home {
+    //height: 2300px;
+    background: url("../assets/images/bg-top-home.png") no-repeat top center,
+    url("../assets/images/bg-bottom-home.png") no-repeat bottom center;
+    background-size: contain;
+  }
 
-}
+  .card-info {
+    width: 20%;
+    height: 400px;
+  }
+
+  .card-price {
+    width: 25%;
+    margin: 0 2%;
+    height: 400px;
+  }
+
+  .btn.btn-lg {
+    width: 15%;
+  }
 </style>

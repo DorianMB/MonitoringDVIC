@@ -11,10 +11,26 @@
 
 body {
   @extend .roboto;
+  font-size: 12px !important;
 }
 
 h1 {
   @extend .pattaya;
+  color: black;
+  font-size: 32px !important;
+}
+
+h2 {
+  @extend .roboto;
+  color: black;
+  font-size: 24px !important;
+}
+
+h3 {
+  @extend .roboto;
+  color: $gray;
+  font-size: 18px !important;
+  text-transform: uppercase;
 }
 
 .color{

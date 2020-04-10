@@ -1,9 +1,9 @@
 <template>
-  <div class="navbar" id="navbar" :class="fixed ? 'fixed-' + fixed : ''">
+  <div class="navbar fixed-top" id="navbar">
     <router-link tag="button" to="/" class="btn btn-navbar color-black">
       Accueil
     </router-link>
-    <button href="/" class="mar-l-18 btn btn-navbar navbar-logo" v-if="fixed !== 'bottom'"></button>
+    <button href="/" class="mar-l-18 btn btn-navbar navbar-logo" v-if="logo"></button>
     <div class="h-100">
       <router-link tag="button" to="/connexion" class="btn btn-navbar color-black">Connexion</router-link>
       <router-link tag="button" to="/inscription" class="btn btn-navbar color-black">Inscription</router-link>
@@ -15,9 +15,9 @@
 export default {
   name: "navbar",
   props: {
-    fixed: {
-      type: String,
-      default: "top"
+    logo: {
+      type: Boolean,
+      default: true
     }
   }
 };

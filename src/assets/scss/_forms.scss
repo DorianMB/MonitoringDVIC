@@ -1,0 +1,15 @@
+.group-input-label {
+  text-align: left;
+  width: 65%;
+}
+
+.form-control {
+  background-color: $light !important;
+  border: none !important;
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(67,183,185,.25) !important;
+  }
+  &::placeholder {
+    color: $gray;
+  }
+}

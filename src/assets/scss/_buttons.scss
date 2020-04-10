@@ -293,6 +293,9 @@
       }
     }
   }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(67,183,185,.25) !important;
+  }
 }
 
 .btn-xl {
@@ -300,4 +303,8 @@
   width: auto;
   font-size: 24px;
   padding: 0 56px !important;
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(67,183,185,.25) !important;
+  }
 }

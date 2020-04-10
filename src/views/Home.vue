@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar :fixed="'top'"></navbar>
+    <navbar :logo="'top'"></navbar>
     <div class="home">
       <img class="mar-t-14" src="../assets/images/logo-white.png"/>
       <div class="row mar-t-16">

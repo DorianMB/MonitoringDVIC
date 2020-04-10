@@ -169,6 +169,7 @@ export default {
   data: () => {
     return {
       height: window.innerHeight,
+      width: window.innerWidth,
       priceByMonth: true
     };
   },
@@ -178,6 +179,7 @@ export default {
   mounted() {
     const navbar = document.getElementById("navbar");
     navbar.classList.add("d-none");
+    console.log(this.width);
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -191,7 +193,6 @@ export default {
         const pourcentage = this.getPourcentage(
           (event.path[1].pageYOffset - this.height)
         );
-        console.log("ici", pourcentage + 100);
         navbar.style.backgroundColor = "red";
         navbar.style.opacity = (pourcentage + 100) / 100;
       } else {
@@ -210,6 +211,11 @@ export default {
     background: url("../assets/images/bg-top-home.png") no-repeat top center,
     url("../assets/images/bg-bottom-home.png") no-repeat bottom center;
     background-size: contain;
+    img.mar-t-14{
+      @media (max-width: 1920px) and (min-width: 1660px) {
+        margin-top: 160px;
+      }
+    }
   }
 
   .card-info {
@@ -225,5 +231,29 @@ export default {
 
   .btn.btn-lg {
     width: 15%;
+  }
+
+  .row.mar-t-16 {
+    @media (max-width: 1920px) and (min-width: 1660px) {
+      margin-top: 160px;
+    }
+  }
+
+  .color-black.mar-t-42 {
+    @media (max-width: 1920px) and (min-width: 1660px) {
+      margin-top: 500px;
+    }
+  }
+
+  .row.mar-t-6 {
+    @media (max-width: 1920px) and (min-width: 1660px) {
+      margin-top: 160px;
+    }
+  }
+
+  #price-month, #price-year {
+    @media (max-width: 1920px) and (min-width: 1660px) {
+      margin-top: 160px;
+    }
   }
 </style>

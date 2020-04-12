@@ -9,69 +9,69 @@
     @extend .back-secondary;
     @extend .color-white;
     border: 1px solid $secondary !important;
-    }
+  }
 
   &-tertiary {
     @extend .back-tertiary;
     @extend .color-white;
     border: 1px solid $tertiary !important;
-    }
+  }
 
   &-danger {
     background-color: $danger;
     @extend .color-white;
     border: 1px solid $danger !important;
-    }
+  }
 
   &-warn {
     background-color: $warn;
     @extend .color-white;
     border: 1px solid $warn !important;
-    }
+  }
 
   &-info {
     background-color: $info;
     @extend .color-white;
     border: 1px solid $info !important;
-    }
+  }
 
   &-success {
     background-color: $success;
     @extend .color-white;
     border: 1px solid $success !important;
-    }
+  }
 
   &-gradient {
     @extend .back-gradient;
     @extend .color-white;
     border: 1px solid $gradient !important;
-    }
+  }
 
   &-light {
     @extend .back-light;
     @extend .color-white;
     border: 1px solid $light !important;
-    }
+  }
 
   &-gray {
     @extend .back-gray;
     @extend .color-white;
     border: 1px solid $gray !important;
-    }
+  }
 
   &-white {
     @extend .back-white;
     @extend .color-white;
     border: 1px solid $white !important;
-    }
+  }
 
   &-dark {
     @extend .back-dark;
     @extend .color-white;
     border: 1px solid $dark !important;
-    }
+  }
 
-  &{
+  & {
     &-primary:hover {
       @extend .back-white;
       @extend .color-primary;
@@ -293,8 +293,9 @@
       }
     }
   }
+
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(67,183,185,.25) !important;
+    box-shadow: 0 0 0 0.2rem rgba(67, 183, 185, .25) !important;
   }
 }
 
@@ -305,6 +306,28 @@
   padding: 0 56px !important;
 
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(67,183,185,.25) !important;
+    box-shadow: 0 0 0 0.2rem rgba(67, 183, 185, .25) !important;
+  }
+}
+
+button {
+  &.card-layout {
+    border: none;
+
+    &:hover, &:focus {
+      background-color: $primary;
+
+      h3, span {
+        color: $white !important;
+      }
+    }
+
+    &.price-choice {
+      background-color: $primary;
+
+      h3, span {
+        color: $white !important;
+      }
+    }
   }
 }

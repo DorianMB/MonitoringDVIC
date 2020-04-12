@@ -15,7 +15,7 @@
       <div class="row mar-t-16">
         <div class="offset-2 col-8">
           <router-link tag="button" to="/connexion" class="btn btn-xl btn-outline-primary">Connexion</router-link>
-          <router-link tag="button" to="/connexion" class="btn btn-xl btn-outline-primary ml-5">
+          <router-link tag="button" to="/inscription" class="btn btn-xl btn-outline-primary ml-5">
             Inscription
           </router-link>
         </div>
@@ -161,7 +161,7 @@
 
 <script>
 // @ is an alias to /src
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 
 export default {
   name: "Home",

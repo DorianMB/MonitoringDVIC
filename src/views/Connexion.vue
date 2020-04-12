@@ -1,8 +1,7 @@
 <template>
   <div>
-    <navbar :logo="false"></navbar>
-    <div class="connexion d-flex flex-column align-items-center">
-      <img class="mar-t-14 mar-b-8" src="../assets/images/logo-white.png" />
+    <navbar :logo="true"></navbar>
+    <div class="connexion d-flex flex-column justify-content-center align-items-center">
       <div class="card-layout d-flex flex-column align-items-center">
         <h1 class="mar-b-0">Connexion</h1>
         <div class="group-input-label mar-t-2">
@@ -31,7 +30,7 @@
 
 <script>
 // @ is an alias to /src
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 
 export default {
   name: "Connexion",

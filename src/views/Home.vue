@@ -179,7 +179,12 @@ export default {
   mounted() {
     const navbar = document.getElementById("navbar");
     navbar.classList.add("d-none");
-    console.log(this.width);
+  },
+  beforeMount() {
+    console.log(localStorage.users);
+    if (localStorage.users === null || localStorage.users === undefined) {
+      this.initData();
+    }
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -201,6 +206,15 @@ export default {
     },
     getPourcentage(number) {
       return number / 1.2;
+    },
+    initData() {
+      const users = [
+        {
+          email: "admin@admin.fr",
+          password: "admin"
+        }
+      ]
+      localStorage.users = JSON.stringify(users);
     }
   }
 };
@@ -211,7 +225,8 @@ export default {
     background: url("../assets/images/bg-top-home.png") no-repeat top center,
     url("../assets/images/bg-bottom-home.png") no-repeat bottom center;
     background-size: contain;
-    img.mar-t-14{
+
+    img.mar-t-14 {
       @media (max-width: 1920px) and (min-width: 1660px) {
         margin-top: 160px;
       }

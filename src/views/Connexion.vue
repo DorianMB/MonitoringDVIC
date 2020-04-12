@@ -11,6 +11,7 @@
             id="email"
             placeholder="Email"
             class="form-control"
+            v-model="credentials.email"
           />
         </div>
         <div class="group-input-label mar-t-3">
@@ -20,9 +21,10 @@
             id="password"
             placeholder="Mot de passe"
             class="form-control"
+            v-model="credentials.password"
           />
         </div>
-        <button class="btn btn-primary mar-t-4">Se connecter</button>
+        <button class="btn btn-primary mar-t-4" v-on:click="testConnexion">Se connecter</button>
       </div>
     </div>
   </div>
@@ -34,22 +36,38 @@ import Navbar from "@/components/Navbar";
 
 export default {
   name: "Connexion",
-  components: { Navbar }
+  components: {Navbar},
+  data: () => {
+    return {
+      credentials: {
+        email: null,
+        password: null
+      }
+    };
+  },
+  methods: {
+    testConnexion() {
+      const users = JSON.parse(localStorage.users);
+      const res = users.find(user => user.email === this.credentials.email && user.password === this.credentials.password);
+      res ? alert("connected") : alert("error");
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
-.connexion {
-  width: 100vw;
-  height: 100vh;
-  background: url("../assets/images/bg-connexion.png") no-repeat top left;
-  background-size: contain;
-}
-
-.card-layout {
-  width: 28%;
-  .btn-primary {
-    width: 60%;
+  .connexion {
+    width: 100vw;
+    height: 100vh;
+    background: url("../assets/images/bg-connexion.png") no-repeat top left;
+    background-size: contain;
   }
-}
+
+  .card-layout {
+    width: 28%;
+
+    .btn-primary {
+      width: 60%;
+    }
+  }
 </style>

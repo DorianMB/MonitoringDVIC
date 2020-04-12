@@ -1,0 +1,17 @@
+.stepper-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  .stepper-point {
+    background-color: $gray;
+    border-radius: 50px;
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+    &-active {
+      width: 30px;
+      background-color: $primary;
+    }
+  }
+}

@@ -1,10 +1,10 @@
 <template>
   <div>
     <navbar :logo="false"></navbar>
-    <div class="connexion d-flex flex-column align-items-center">
+    <div class="inscription d-flex flex-column align-items-center">
       <img class="mar-t-14 mar-b-8" src="../assets/images/logo-white.png" />
       <div class="card-layout d-flex flex-column align-items-center">
-        <h1 class="mar-b-0">Connexion</h1>
+        <h1 class="mar-b-0">Inscription</h1>
         <div class="group-input-label mar-t-2">
           <label for="email">Email</label>
           <input
@@ -24,6 +24,7 @@
           />
         </div>
         <button class="btn btn-primary mar-t-4">Se connecter</button>
+        <stepper :steps="3" :active-step="2"></stepper>
       </div>
     </div>
   </div>
@@ -31,26 +32,27 @@
 
 <script>
 // @ is an alias to /src
-import Navbar from "@/components/Navbar";
+import Navbar from "../components/Navbar";
+import Stepper from "@/components/Stepper";
 
 export default {
-  name: "Connexion",
-  components: { Navbar }
+  name: "Inscription",
+  components: {Stepper, Navbar }
 };
 </script>
 
 <style scoped lang="scss">
-.connexion {
-  width: 100vw;
-  height: 100vh;
-  background: url("../assets/images/bg-connexion.png") no-repeat top left;
-  background-size: contain;
-}
-
-.card-layout {
-  width: 28%;
-  .btn-primary {
-    width: 60%;
+  .inscription {
+    width: 100vw;
+    height: 100vh;
+    background: url("../assets/images/bg-connexion.png") no-repeat top left;
+    background-size: contain;
   }
-}
+
+  .card-layout {
+    width: 28%;
+    .btn-primary {
+      width: 60%;
+    }
+  }
 </style>

@@ -77,6 +77,8 @@ export default {
           "Connection réussie",
           this.getToastOptions("toast-success", "Ok")
         );
+        localStorage.currentUser = JSON.stringify(res);
+        this.$router.push({ name: "ConnectedHome" });
       } else {
         this.$toasted.show(
           "Une erreur est survenue",

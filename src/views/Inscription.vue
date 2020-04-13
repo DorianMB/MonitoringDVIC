@@ -12,6 +12,7 @@
               id="email"
               placeholder="Email"
               class="form-control"
+              v-model="user.email"
             />
           </div>
           <div class="group-input-label mar-t-3">
@@ -21,6 +22,7 @@
               id="password"
               placeholder="Mot de passe"
               class="form-control"
+              v-model="user.password"
             />
           </div>
           <div class="group-input-label mar-t-3">
@@ -41,6 +43,7 @@
               id="firstname"
               placeholder="Prénom"
               class="form-control"
+              v-model="account.firstname"
             />
           </div>
           <div class="group-input-label mar-t-3">
@@ -50,6 +53,7 @@
               id="lastname"
               placeholder="Nom"
               class="form-control"
+              v-model="account.lastname"
             />
           </div>
           <div class="group-input-label mar-t-3">
@@ -59,6 +63,7 @@
               id="phone"
               placeholder="Téléphone"
               class="form-control"
+              v-model="account.phone"
             />
           </div>
         </div>
@@ -70,6 +75,7 @@
               id="companyName"
               placeholder="Nom de l'entreprise"
               class="form-control"
+              v-model="account.companyName"
             />
           </div>
           <div class="group-input-label mar-t-3">
@@ -79,6 +85,7 @@
               id="companyAddress"
               placeholder="Adresse de l'entreprise"
               class="form-control"
+              v-model="account.companyAddress"
             />
           </div>
           <div class="group-input-label mar-t-3">
@@ -88,6 +95,7 @@
               id="siret"
               placeholder="Numéro de Siret"
               class="form-control"
+              v-model="account.siret"
             />
           </div>
         </div>
@@ -149,9 +157,11 @@
             </button>
           </div>
         </div>
-        <button class="btn btn-primary mar-t-4" v-on:click="nextStep()">
-          <span v-if="currentStep !== 4">Suivant</span>
-          <span v-else>Valider</span>
+        <button v-if="currentStep !== 4" class="btn btn-primary mar-t-4" v-on:click="nextStep()">
+          Suivant
+        </button>
+        <button v-else class="btn btn-primary mar-t-4" v-on:click="validSignUp">
+          Valider
         </button>
         <stepper :steps="4" :active-step="currentStep" @newStep="updateStep"></stepper>
       </div>
@@ -171,7 +181,23 @@ export default {
     return {
       currentStep: 1,
       priceByMonth: true,
-      priceChoice: null
+      priceChoice: null,
+      user: {
+        id: 1,
+        email: null,
+        password: null
+      },
+      account: {
+        id: 1,
+        userId: 1,
+        firstname: null,
+        lastname: null,
+        phone: null,
+        companyName: null,
+        companyAddress: null,
+        siret: null,
+        offer: null
+      }
     };
   },
   watch: {
@@ -181,6 +207,9 @@ export default {
         card.style.width = "40%";
         console.log(card);
       }
+    },
+    priceChoice(newValue) {
+      this.account.offer = newValue;
     }
   },
   methods: {
@@ -189,6 +218,60 @@ export default {
     },
     updateStep(value) {
       this.currentStep = value;
+    },
+    getToastOptions(className, actionText) {
+      return {
+        theme: "outline",
+        className: className,
+        position: "top-center",
+        fullWidth: true,
+        action: {
+          text: actionText,
+          onClick: (e, toastObject) => {
+            toastObject.goAway(0);
+          }
+        },
+        duration: 4000
+      };
+    },
+    validSignUp() {
+      const resUser = Object.keys(this.user).find(key => {
+        if (this.user[key] === null) {
+          console.log(key);
+          return true;
+        }
+      });
+      const resForm = Object.keys(this.account).find(key => {
+        if (this.account[key] === null) {
+          console.log(key);
+          return true;
+        }
+      });
+      if (resUser || resForm) {
+        this.$toasted.show(
+          "Toute les informations n'ont pas été remplies",
+          this.getToastOptions("toast-danger", "Ok")
+        );
+      } else {
+        const users = JSON.parse(localStorage.users);
+        const accounts = JSON.parse(localStorage.accounts);
+        users.forEach(user => {
+          user ? this.user.id++ : null;
+        });
+        accounts.forEach(account => {
+          account ? this.account.id++ : null;
+        });
+        this.account.userId = this.user.id;
+        users.push(this.user);
+        accounts.push(this.account);
+        localStorage.users = JSON.stringify(users);
+        localStorage.accounts = JSON.stringify(accounts);
+        this.$toasted.show(
+          "Votre compte viens d'être créé",
+          this.getToastOptions("toast-success", "Ok")
+        );
+        this.$router.push({ name: "Connexion" });
+      }
     }
   }
 };

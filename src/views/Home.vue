@@ -210,11 +210,26 @@ export default {
     initData() {
       const users = [
         {
+          id: 1,
           email: "admin@admin.fr",
           password: "admin"
         }
       ]
+      const accounts = [
+        {
+          id: 1,
+          userId: 1,
+          firstname: null,
+          lastname: null,
+          phone: null,
+          companyName: null,
+          companyAddress: null,
+          siret: null,
+          offer: null
+        }
+      ];
       localStorage.users = JSON.stringify(users);
+      localStorage.accounts = JSON.stringify(accounts);
     }
   }
 };

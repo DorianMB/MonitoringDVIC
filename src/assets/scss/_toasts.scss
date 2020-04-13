@@ -40,3 +40,9 @@
     }
   }
 }
+
+.toasted-container.top-center.full-width{
+  @media (min-width: 800px) {
+    max-width: 50%;
+  }
+}

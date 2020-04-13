@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar :logo="'top'"></navbar>
+    <navbar></navbar>
     <div class="home">
       <img class="mar-t-14" src="../assets/images/logo-white.png"/>
       <div class="row mar-t-16">
@@ -181,7 +181,6 @@ export default {
     navbar.classList.add("d-none");
   },
   beforeMount() {
-    console.log(localStorage.users);
     if (localStorage.users === null || localStorage.users === undefined) {
       this.initData();
     }

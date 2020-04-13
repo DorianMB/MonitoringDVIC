@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar :logo="true"></navbar>
+    <navbar></navbar>
     <div
       class="connexion d-flex flex-column justify-content-center align-items-center"
     >

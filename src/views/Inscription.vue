@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar :logo="true"></navbar>
+    <navbar></navbar>
     <div class="inscription d-flex flex-column justify-content-center align-items-center">
       <div id="inscription-card" class="card-layout d-flex flex-column align-items-center">
         <h1 class="mar-b-0">Inscription</h1>
@@ -205,7 +205,6 @@ export default {
       if (newValue === 4) {
         const card = document.getElementById("inscription-card");
         card.style.width = "40%";
-        console.log(card);
       }
     },
     priceChoice(newValue) {
@@ -237,13 +236,11 @@ export default {
     validSignUp() {
       const resUser = Object.keys(this.user).find(key => {
         if (this.user[key] === null) {
-          console.log(key);
           return true;
         }
       });
       const resForm = Object.keys(this.account).find(key => {
         if (this.account[key] === null) {
-          console.log(key);
           return true;
         }
       });

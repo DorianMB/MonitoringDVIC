@@ -1,8 +1,8 @@
 <template>
   <div>
-    <navbar></navbar>
+    <navbar :current-user="currentUser"></navbar>
     <div class="homepage">
-      <p>Vous etes connectés</p>
+      <p class="mar-t-8">Vous etes connectés</p>
     </div>
   </div>
 </template>
@@ -11,10 +11,17 @@
 import Navbar from "@/components/Navbar";
 export default {
   name: "ConnectedHome",
-  components: {Navbar}
+  components: { Navbar },
+  data: () => {
+    return {
+      currentUser: JSON.parse(localStorage.currentUser)
+    };
+  }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+ .homepage {
 
+ }
 </style>

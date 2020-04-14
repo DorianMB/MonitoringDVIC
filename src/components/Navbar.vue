@@ -12,8 +12,8 @@
       <router-link tag="button" to="/inscription" class="btn btn-navbar color-black">Inscription</router-link>
     </div>
     <div v-else id="account-menu" class="h-100 d-flex justify-content-center align-items-center">
-      <div class="dropdown h-100">
-        <button class="btn btn-navbar dropdown-toggle d-flex justify-content-center align-items-center" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div class="dropdown h-100 w-100 mar-r-2 mar-l-2">
+        <button class="btn btn-navbar dropdown-toggle d-flex justify-content-center align-items-center w-100" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div>{{ currentUser.email }}</div>
           <div id="profil-picture" class="profil-picture mar-l-2 mar-r-2"></div>
         </button>

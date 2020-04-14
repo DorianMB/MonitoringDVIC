@@ -74,73 +74,73 @@
   & {
     &-primary:hover {
       @extend .back-white;
-      @extend .color-primary;
+      color: $primary !important;
       border: 1px solid $primary !important;
     }
 
     &-secondary:hover {
       @extend .back-white;
-      @extend .back-secondary;
+      color: $secondary !important;
       border: 1px solid $secondary !important;
     }
 
     &-tertiary:hover {
       @extend .back-white;
-      @extend .back-tertiary;
+      color: $tertiary !important;
       border: 1px solid $tertiary !important;
     }
 
     &-danger:hover {
       @extend .back-white;
-      background-color: $danger;
+      color: $danger !important;
       border: 1px solid $danger !important;
     }
 
     &-warn:hover {
       @extend .back-white;
-      background-color: $warn;
+      color: $warn !important;
       border: 1px solid $warn !important;
     }
 
     &-info:hover {
       @extend .back-white;
-      background-color: $info;
+      color: $info !important;
       border: 1px solid $info !important;
     }
 
     &-success:hover {
       @extend .back-white;
-      background-color: $success;
+      color: $success !important;
       border: 1px solid $success !important;
     }
 
     &-gradient:hover {
       @extend .back-white;
-      @extend .back-gradient;
+      color: $tertiary !important;
       border: 1px solid $gradient !important;
     }
 
     &-light:hover {
       @extend .back-white;
-      @extend .back-light;
+      color: $light !important;
       border: 1px solid $light !important;
     }
 
     &-gray:hover {
       @extend .back-white;
-      @extend .back-gray;
+      color: $gray !important;
       border: 1px solid $gray !important;
     }
 
     &-white:hover {
       @extend .back-white;
-      @extend .back-white;
+      color: black !important;
       border: 1px solid $white !important;
     }
 
     &-dark:hover {
       @extend .back-white;
-      @extend .back-dark;
+      color: $dark !important;
       border: 1px solid $dark !important;
     }
   }

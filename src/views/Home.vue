@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar :logo="'top'"></navbar>
+    <navbar></navbar>
     <div class="home">
       <img class="mar-t-14" src="../assets/images/logo-white.png"/>
       <div class="row mar-t-16">
@@ -179,7 +179,11 @@ export default {
   mounted() {
     const navbar = document.getElementById("navbar");
     navbar.classList.add("d-none");
-    console.log(this.width);
+  },
+  beforeMount() {
+    if (localStorage.users === null || localStorage.users === undefined) {
+      this.initData();
+    }
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -201,6 +205,30 @@ export default {
     },
     getPourcentage(number) {
       return number / 1.2;
+    },
+    initData() {
+      const users = [
+        {
+          id: 1,
+          email: "admin@admin.fr",
+          password: "admin"
+        }
+      ]
+      const accounts = [
+        {
+          id: 1,
+          userId: 1,
+          firstname: null,
+          lastname: null,
+          phone: null,
+          companyName: null,
+          companyAddress: null,
+          siret: null,
+          offer: null
+        }
+      ];
+      localStorage.users = JSON.stringify(users);
+      localStorage.accounts = JSON.stringify(accounts);
     }
   }
 };
@@ -211,7 +239,8 @@ export default {
     background: url("../assets/images/bg-top-home.png") no-repeat top center,
     url("../assets/images/bg-bottom-home.png") no-repeat bottom center;
     background-size: contain;
-    img.mar-t-14{
+
+    img.mar-t-14 {
       @media (max-width: 1920px) and (min-width: 1660px) {
         margin-top: 160px;
       }

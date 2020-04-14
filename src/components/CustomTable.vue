@@ -9,7 +9,7 @@
       </thead>
       <tbody>
       <tr v-for="(item, index) in values" :key="index">
-        <td scope="row" v-for="(col, key) in settings.column" :key="key">{{col.hasOwnProperty('valuePrepareFunction') ? col.valuePrepareFunction(item[key]) : item[key]}}</td>
+        <td scope="row" v-for="(col, key) in settings.column" :key="key">{{col.hasOwnProperty('valuePrepareFunction') ? col.valuePrepareFunction(item) : item[key]}}</td>
         <td scope="row" v-if="settings.actions">
           <button class="btn btn-secondary" v-for="(action, name) in settings.actions" :key="name" v-on:click="action.prepareFunction(item)">{{action.icon}}</button>
         </td>

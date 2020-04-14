@@ -1,18 +1,22 @@
 export default function () {
   return {
     column: {
-      id: {
-        title: "#"
-      },
-      email: {
-        title: "email"
-      },
-      password: {
-        title: "password",
-        valuePrepareFunction: (value: any) => {
-          console.log(value);
-          return "*****";
+      userId: {
+        title: "email",
+        valuePrepareFunction: (item: any) => {
+          const users = JSON.parse(localStorage.users);
+          const res = users.find((user:any) => user.id === item.userId);
+          return res.email;
         }
+      },
+      firstname: {
+        title: "prénom"
+      },
+      lastname: {
+        title: "nom"
+      },
+      companyName: {
+        title: "nom de l'entreprise",
       }
     },
     actions: {

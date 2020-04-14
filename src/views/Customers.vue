@@ -19,7 +19,7 @@ export default {
     return {
       currentUser: JSON.parse(localStorage.currentUser),
       settings: settings(),
-      values: JSON.parse(localStorage.users)
+      values: JSON.parse(localStorage.accounts)
     };
   }
 };

@@ -2,7 +2,7 @@
   <div>
     <navbar :current-user="currentUser"></navbar>
     <div class="customers d-flex justify-content-center align-items-center">
-      <custom-table :settings="settings" :values="values" class="custom-table"></custom-table>
+      <custom-table :settings="settings" :values="customers" class="custom-table"></custom-table>
     </div>
   </div>
 </template>
@@ -19,8 +19,13 @@ export default {
     return {
       currentUser: JSON.parse(localStorage.currentUser),
       settings: settings(),
-      values: JSON.parse(localStorage.customers)
+      customers: null
     };
+  },
+  beforeMount() {
+    const customersList = JSON.parse(localStorage.customers);
+    const customersFiltered = customersList.filter(customer => customer.userId === this.currentUser.id);
+    this.customers = customersFiltered;
   }
 };
 </script>

@@ -263,7 +263,6 @@ export default {
           customer.customerPhone = this.randomString("number", 10);
           customer.customerEmail = this.randomString("string", 18);
           customer.customerAddress = this.randomString("string", 20);
-          console.log(i, customer);
           customers.push(customer);
         }
         localStorage.customers = JSON.stringify(customers);

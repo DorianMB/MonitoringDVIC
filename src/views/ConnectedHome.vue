@@ -3,13 +3,13 @@
     <navbar :current-user="currentUser"></navbar>
     <div class="homepage">
       <div class="d-flex justify-content-center align-items-center w-100 h-100">
-        <button class="card-layout d-flex flex-column align-items-center">
+        <router-link tag="button" to="/customers" class="card-layout d-flex flex-column align-items-center">
           <img
             src="../assets/images/card-customers.jpeg"
             class="img-fluid img-card-top"
           />
           <h3>Vos clients</h3>
-        </button>
+        </router-link>
         <button class="card-layout d-flex flex-column align-items-center">
           <img
             src="../assets/images/card-missions.jpeg"

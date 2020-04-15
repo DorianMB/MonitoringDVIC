@@ -1,0 +1,22 @@
+.table {
+  .thead-primary {
+    background-color: $tertiary;
+    color: $white;
+    tr {
+      th {
+        border-bottom: none;
+        border-top: none;
+      }
+    }
+  }
+  tbody {
+    th, td {
+      border-color: rgba(137, 41, 173, 0.1);
+    }
+    tr{
+      &:hover {
+        background-color: $light;
+      }
+    }
+  }
+}

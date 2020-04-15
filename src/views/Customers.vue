@@ -14,12 +14,12 @@ import settings from "@/views/tables-settings/test-settings"
 
 export default {
   name: "Customers",
-  components: {CustomTable, Navbar },
+  components: { CustomTable, Navbar },
   data: () => {
     return {
       currentUser: JSON.parse(localStorage.currentUser),
       settings: settings(),
-      values: JSON.parse(localStorage.accounts)
+      values: JSON.parse(localStorage.customers)
     };
   }
 };
@@ -33,6 +33,8 @@ export default {
     background-size: 100vw auto;
     .custom-table {
       width: 80%;
+      @extend .mar-t-14;
+      @extend .mar-b-10;
     }
   }
 </style>

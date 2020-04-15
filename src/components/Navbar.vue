@@ -36,13 +36,15 @@ export default {
     }
   },
   mounted() {
-    let url = "https://i.stack.imgur.com/l60Hf.png";
-    if (this.currentUser.profilePicture) {
-      url = this.currentUser.profilePicture;
+    if (this.currentUser) {
+      let url = "https://i.stack.imgur.com/l60Hf.png";
+      if (this.currentUser.profilePicture) {
+        url = this.currentUser.profilePicture;
+      }
+      const element = document.getElementById("profil-picture");
+      element.style.background = "url(" + url + ") center center no-repeat";
+      element.style.backgroundSize = "cover";
     }
-    const element = document.getElementById("profil-picture");
-    element.style.background = "url(" + url + ") center center no-repeat";
-    element.style.backgroundSize = "cover";
   },
   methods: {
     logOut() {

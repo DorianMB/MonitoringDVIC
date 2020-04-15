@@ -28,7 +28,9 @@ export default {
 <style scoped lang="scss">
   .customers {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    background: url("../assets/images/bg-tables.png") top center;
+    background-size: 100vw auto;
     .custom-table {
       width: 80%;
     }

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <table class="table">
+  <div class="card-layout p-0 border-radius-0">
+    <table class="table m-0">
       <thead class="thead-primary">
       <tr>
         <th scope="col" v-for="(col, key) in settings.column" :key="key">{{col.title}}</th>

@@ -1,3 +1,5 @@
+import router from "../../router";
+
 export default function () {
   return {
     column: {
@@ -18,7 +20,7 @@ export default function () {
       show: {
         icon: "Show",
         class: "btn-info",
-        prepareFunction: (value: any) => console.log(value)
+        prepareFunction: (value: any) => router.push({name: "CustomerDetails", params: { id: value.id }})
       },
       edit: {
         icon: "Edit",

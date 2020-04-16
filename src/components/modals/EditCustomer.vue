@@ -84,16 +84,26 @@ export default {
   },
   methods: {
     saveCustomer() {
+      const customerList = JSON.parse(localStorage.customers);
       if (this.customer.id) {
-        const customerList = JSON.parse(localStorage.customers);
         const index = customerList.findIndex(
           item => (item.id = this.customer.id)
         );
         customerList[index] = this.customer;
-        localStorage.customers = JSON.stringify(customerList);
-        // ('#editCustomer').modal('hide');
-        this.close(this.customer);
+      } else {
+        const currentUser = JSON.parse(localStorage.currentUser);
+        this.customer.userId = currentUser.id;
+        let max = 0;
+        customerList.forEach(item => {
+          if (item.id > max) {
+            max = item.id;
+          }
+        });
+        this.customer.id = max + 1;
+        customerList.push(this.customer);
       }
+      localStorage.customers = JSON.stringify(customerList);
+      this.close(this.customer);
     },
     close(value) {
       this.$emit("close", value);

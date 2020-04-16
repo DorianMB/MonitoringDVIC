@@ -19,7 +19,7 @@ export default function () {
       show: {
         icon: "Details",
         class: "btn-info",
-        prepareFunction: (value: any) => router.push({name: "CustomerDetails", params: { id: value.id }})
+        prepareFunction: (value: any, modal: any) => router.push({name: "CustomerDetails", params: { id: value.id }})
       },
       edit: {
         icon: "Modifier",
@@ -38,7 +38,16 @@ export default function () {
       delete: {
         icon: "Supprimer",
         class: "btn-danger",
-        prepareFunction: (value: any) => console.log(value)
+        prepareFunction: (value: any, modal: any) => {
+          modal.show(EditCustomer, {
+            customer: {...value}
+          }, {
+            draggable: true,
+            adaptive: true,
+            scrollable: true,
+            height: 'auto'
+          })
+        }
       }
     }
   };

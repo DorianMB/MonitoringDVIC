@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="row mar-t-10">
-        <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#editCustomer" @click="showModal()">
+        <button class="btn btn-lg btn-success" @click="showModal()">
           Modifier
         </button>
         <button class="btn btn-lg btn-danger mar-l-8">Supprimer</button>

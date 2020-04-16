@@ -14,7 +14,7 @@
 <script>
 import Navbar from "@/components/Navbar";
 import CustomTable from "@/components/CustomTable";
-import settings from "@/views/tables-settings/test-settings";
+import settings from "@/views/tables-settings/customers-settings";
 
 export default {
   name: "Customers",

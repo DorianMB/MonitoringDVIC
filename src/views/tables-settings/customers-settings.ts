@@ -11,9 +11,6 @@ export default function () {
       },
       customerPhone: {
         title: "phone"
-      },
-      customerAddress: {
-        title: "adresse",
       }
     },
     actions: {

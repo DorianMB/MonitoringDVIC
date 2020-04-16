@@ -2,9 +2,23 @@
   <div>
     <navbar :current-user="currentUser"></navbar>
     <div
-      class="customer-details d-flex justify-content-center align-items-center"
+      class="customer-details d-flex flex-column align-items-center pad-t-12"
     >
-      <h1>{{ customer ? customer.customerCompany : "" }}</h1>
+      <h1>Détails du client</h1>
+      <div class="card-layout flex-row row fs-14">
+        <div class="col">
+          <p><span class="fw-800">nom de l'entreprise : </span>{{ customer ? customer.customerCompany : "" }}</p>
+          <p><span class="fw-800">adrresse du client : </span>{{ customer ? customer.customerAddress : "" }}</p>
+        </div>
+        <div class="col">
+          <p><span class="fw-800">email du client : </span>{{ customer ? customer.customerEmail : "" }}</p>
+          <p><span class="fw-800">téléphone du client : </span>{{ customer ? customer.customerPhone : "" }}</p>
+        </div>
+      </div>
+      <div class="row mar-t-10">
+        <button class="btn btn-lg btn-success">Edit</button>
+        <button class="btn btn-lg btn-danger mar-l-8">Delete</button>
+      </div>
     </div>
   </div>
 </template>
@@ -36,6 +50,7 @@ export default {
       );
       this.$router.push({ name: "Customers" });
     }
+    console.log(this.customer);
   },
   methods: {
     getToastOptions(className, actionText) {
@@ -63,5 +78,12 @@ export default {
   min-height: 100vh;
   background: url("../assets/images/bg-tables.png") top center;
   background-size: 100vw auto;
+  .card-layout {
+    width: 80%;
+    @extend .mar-t-10;
+    p {
+      padding-top: 18px;
+    }
+  }
 }
 </style>

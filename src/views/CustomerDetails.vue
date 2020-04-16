@@ -16,24 +16,27 @@
         </div>
       </div>
       <div class="row mar-t-10">
-        <button class="btn btn-lg btn-success">Edit</button>
-        <button class="btn btn-lg btn-danger mar-l-8">Delete</button>
+        <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#editCustomer" v-on:click="showModal = true">Modifier</button>
+        <button class="btn btn-lg btn-danger mar-l-8">Supprimer</button>
       </div>
     </div>
+    <EditCustomer v-if="showModal" :customer="{...customer}" @return="updateCustomer"></EditCustomer>
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar";
+import EditCustomer from "@/components/modals/EditCustomer";
 
 export default {
   name: "CustomerDetails",
-  components: { Navbar },
+  components: { Navbar, EditCustomer },
   data: () => {
     return {
       currentUser: null,
       id: null,
-      customer: null
+      customer: null,
+      showModal: false
     };
   },
   beforeMount() {
@@ -50,7 +53,6 @@ export default {
       );
       this.$router.push({ name: "Customers" });
     }
-    console.log(this.customer);
   },
   methods: {
     getToastOptions(className, actionText) {
@@ -67,6 +69,9 @@ export default {
         },
         duration: 4000
       };
+    },
+    updateCustomer(value) {
+      this.customer = value;
     }
   }
 };

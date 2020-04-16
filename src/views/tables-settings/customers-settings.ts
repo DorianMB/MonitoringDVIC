@@ -15,17 +15,17 @@ export default function () {
     },
     actions: {
       show: {
-        icon: "Show",
+        icon: "Details",
         class: "btn-info",
         prepareFunction: (value: any) => router.push({name: "CustomerDetails", params: { id: value.id }})
       },
       edit: {
-        icon: "Edit",
+        icon: "Modifier",
         class: "btn-success",
         prepareFunction: (value: any) => console.log(value)
       },
       delete: {
-        icon: "Delete",
+        icon: "Supprimer",
         class: "btn-danger",
         prepareFunction: (value: any) => console.log(value)
       }

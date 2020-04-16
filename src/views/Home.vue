@@ -74,14 +74,14 @@
         <div class="offset-2 col-8">
           <button
             class="btn btn-lg"
-            v-on:click="priceByMonth = true"
+            @click="priceByMonth = true"
             :class="priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
           >
             Mois
           </button>
           <button
             class="btn btn-lg ml-5"
-            v-on:click="priceByMonth = false"
+            @click="priceByMonth = false"
             :class="!priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
           >
             Année

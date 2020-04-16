@@ -26,7 +26,7 @@
             v-model="credentials.password"
           />
         </div>
-        <button class="btn btn-primary mar-t-4" v-on:click="testConnexion">
+        <button class="btn btn-primary mar-t-4" @click="testConnexion">
           Se connecter
         </button>
       </div>

@@ -103,14 +103,14 @@
           <div class="w-75 mar-t-3 row">
             <button
               class="btn offset-1 col-4"
-              v-on:click="priceByMonth = true"
+              @click="priceByMonth = true"
               :class="priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
             >
               Mois
             </button>
             <button
               class="btn offset-2 col-4"
-              v-on:click="priceByMonth = false"
+              @click="priceByMonth = false"
               :class="!priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
             >
               Année
@@ -118,7 +118,7 @@
           </div>
           <div class="w-100 mar-t-5 mar-b-2 row" v-if="priceByMonth">
             <button class="card-layout col d-flex flex-column align-items-center"
-                    v-on:click="priceChoice = 'month1'" :class="priceChoice === 'month1' ? 'price-choice' : ''">
+                    @click="priceChoice = 'month1'" :class="priceChoice === 'month1' ? 'price-choice' : ''">
               <h3>Auto-entrepreneur</h3>
               <div>
                 <span class="color-primary fs-24">25</span>
@@ -127,7 +127,7 @@
               </div>
             </button>
             <button class="card-layout col d-flex flex-column align-items-center"
-                    v-on:click="priceChoice = 'month2'" :class="priceChoice === 'month2' ? 'price-choice' : ''">
+                    @click="priceChoice = 'month2'" :class="priceChoice === 'month2' ? 'price-choice' : ''">
               <h3>Auto-entrepreneur</h3>
               <div>
                 <span class="color-primary fs-24">25</span>
@@ -138,7 +138,7 @@
           </div>
           <div class="w-100 mar-t-5 mar-b-2 row" v-if="!priceByMonth">
             <button class="card-layout col d-flex flex-column align-items-center"
-                    v-on:click="priceChoice = 'year1'" :class="priceChoice === 'year1' ? 'price-choice' : ''">
+                    @click="priceChoice = 'year1'" :class="priceChoice === 'year1' ? 'price-choice' : ''">
               <h3>Auto-entrepreneur</h3>
               <div>
                 <span class="color-primary fs-24">25</span>
@@ -147,7 +147,7 @@
               </div>
             </button>
             <button class="card-layout col d-flex flex-column align-items-center"
-                    v-on:click="priceChoice = 'year2'" :class="priceChoice === 'year2' ? 'price-choice' : ''">
+                    @click="priceChoice = 'year2'" :class="priceChoice === 'year2' ? 'price-choice' : ''">
               <h3>Auto-entrepreneur</h3>
               <div>
                 <span class="color-primary fs-24">25</span>
@@ -157,10 +157,10 @@
             </button>
           </div>
         </div>
-        <button v-if="currentStep !== 4" class="btn btn-primary mar-t-4" v-on:click="nextStep()">
+        <button v-if="currentStep !== 4" class="btn btn-primary mar-t-4" @click="nextStep()">
           Suivant
         </button>
-        <button v-else class="btn btn-primary mar-t-4" v-on:click="validSignUp">
+        <button v-else class="btn btn-primary mar-t-4" @click="validSignUp">
           Valider
         </button>
         <stepper :steps="4" :active-step="currentStep" @newStep="updateStep"></stepper>

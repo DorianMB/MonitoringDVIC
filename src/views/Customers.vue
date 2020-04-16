@@ -8,6 +8,7 @@
         class="custom-table"
       ></custom-table>
     </div>
+    <modals-container @close="modalClose"/>
   </div>
 </template>
 
@@ -23,7 +24,8 @@ export default {
     return {
       currentUser: JSON.parse(localStorage.currentUser),
       settings: settings(),
-      customers: null
+      customers: null,
+      customer: null
     };
   },
   beforeMount() {
@@ -31,6 +33,17 @@ export default {
     this.customers = customersList.filter(
       customer => customer.userId === this.currentUser.id
     );
+  },
+  methods: {
+    modalClose() {
+      this.updateCustomers();
+    },
+    updateCustomers() {
+      const customersList = JSON.parse(localStorage.customers);
+      this.customers = customersList.filter(
+        customer => customer.userId === this.currentUser.id
+      );
+    }
   }
 };
 </script>

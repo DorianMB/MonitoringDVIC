@@ -11,7 +11,7 @@
       <tr v-for="(item, index) in values" :key="index">
         <td scope="row" v-for="(col, key) in settings.column" :key="key">{{col.hasOwnProperty('valuePrepareFunction') ? col.valuePrepareFunction(item) : item[key]}}</td>
         <td scope="row" v-if="settings.actions">
-          <button class="btn mar-l-1 mar-r-1" v-for="(action, name) in settings.actions" :key="name" :class="action.class" v-on:click="action.prepareFunction(item)">{{action.icon}}</button>
+          <button class="btn mar-l-1 mar-r-1" v-for="(action, name) in settings.actions" :key="name" :class="action.class" @click="action.prepareFunction(item, $modal)">{{action.icon}}</button>
         </td>
       </tr>
       </tbody>

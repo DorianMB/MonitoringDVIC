@@ -16,11 +16,13 @@
         </div>
       </div>
       <div class="row mar-t-10">
-        <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#editCustomer" v-on:click="showModal = true">Modifier</button>
+        <button class="btn btn-lg btn-success" data-toggle="modal" data-target="#editCustomer" @click="showModal()">
+          Modifier
+        </button>
         <button class="btn btn-lg btn-danger mar-l-8">Supprimer</button>
       </div>
     </div>
-    <EditCustomer v-if="showModal" :customer="{...customer}" @return="updateCustomer"></EditCustomer>
+    <modals-container @close="updateCustomer"/>
   </div>
 </template>
 
@@ -30,13 +32,12 @@ import EditCustomer from "@/components/modals/EditCustomer";
 
 export default {
   name: "CustomerDetails",
-  components: { Navbar, EditCustomer },
+  components: {Navbar},
   data: () => {
     return {
       currentUser: null,
       id: null,
-      customer: null,
-      showModal: false
+      customer: null
     };
   },
   beforeMount() {
@@ -51,7 +52,7 @@ export default {
         "Vous n'etes pas autorisé a voir cette page",
         this.getToastOptions("toast-danger", "Ok")
       );
-      this.$router.push({ name: "Customers" });
+      this.$router.push({name: "Customers"});
     }
   },
   methods: {
@@ -74,23 +75,38 @@ export default {
       if (value !== null) {
         this.customer = value;
       }
+    },
+    showModal() {
+      this.$modal.show(
+        EditCustomer,
+        {
+          customer: { ...this.customer }
+        },
+        {
+          draggable: true,
+          adaptive: true,
+          scrollable: true,
+          height: "auto"
+      })
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-.customer-details {
-  width: 100vw;
-  min-height: 100vh;
-  background: url("../assets/images/bg-tables.png") top center;
-  background-size: 100vw auto;
-  .card-layout {
-    width: 80%;
-    @extend .mar-t-10;
-    p {
-      padding-top: 18px;
+  .customer-details {
+    width: 100vw;
+    min-height: 100vh;
+    background: url("../assets/images/bg-tables.png") top center;
+    background-size: 100vw auto;
+
+    .card-layout {
+      width: 80%;
+      @extend .mar-t-10;
+
+      p {
+        padding-top: 18px;
+      }
     }
   }
-}
 </style>

@@ -18,7 +18,7 @@
           <div id="profil-picture" class="profil-picture mar-l-2 mar-r-2"></div>
         </button>
         <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button" v-on:click="logOut">Deconnexion</button>
+          <button class="dropdown-item" type="button" @click="logOut">Deconnexion</button>
           <button class="dropdown-item" type="button">Profil</button>
         </div>
       </div>

@@ -1,5 +1,7 @@
 import router from "../../router";
 
+import EditCustomer from '../../components/modals/EditCustomer.vue'
+
 export default function () {
   return {
     column: {
@@ -22,7 +24,16 @@ export default function () {
       edit: {
         icon: "Modifier",
         class: "btn-success",
-        prepareFunction: (value: any) => console.log(value)
+        prepareFunction: (value: any, modal: any) => {
+          modal.show(EditCustomer, {
+            customer: {...value}
+          }, {
+            draggable: true,
+            adaptive: true,
+            scrollable: true,
+            height: 'auto'
+          })
+        }
       },
       delete: {
         icon: "Supprimer",

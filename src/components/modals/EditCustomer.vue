@@ -7,7 +7,7 @@
             <span v-if="customer.customerCompany">Modifier le client</span>
             <span v-else>Ajouter un client</span>
           </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="close(null)">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -32,7 +32,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" v-on:click="close">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" v-on:click="close(null)">
             Annuler
           </button>
           <button type="button" class="btn btn-success" data-dismiss="modal" v-on:click="saveCustomer()">Sauvegarder</button>
@@ -68,11 +68,11 @@ export default {
         customerList[index] = this.customer;
         localStorage.customers = JSON.stringify(customerList);
         // ('#editCustomer').modal('hide');
-        this.close();
+        this.close(this.customer);
       }
     },
-    close() {
-      this.$emit("return", this.customer);
+    close(value) {
+      this.$emit("return", value);
     }
   }
 };

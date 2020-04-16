@@ -71,7 +71,9 @@ export default {
       };
     },
     updateCustomer(value) {
-      this.customer = value;
+      if (value !== null) {
+        this.customer = value;
+      }
     }
   }
 };

@@ -171,12 +171,14 @@
 <script>
 // @ is an alias to /src
 import Navbar from "@/components/Navbar";
+import InitDataService from "@/services/initdata.service";
 
 export default {
   name: "Home",
   components: { Navbar },
   data: () => {
     return {
+      initDataService: new InitDataService(),
       height: window.innerHeight,
       width: window.innerWidth,
       priceByMonth: true
@@ -214,78 +216,10 @@ export default {
       return number / 1.2;
     },
     initData() {
-      if (localStorage.users === null || localStorage.users === undefined) {
-        const users = [
-          {
-            id: 1,
-            email: "admin@admin.fr",
-            password: "admin"
-          }
-        ];
-        localStorage.users = JSON.stringify(users);
-      }
-      if (
-        localStorage.accounts === null ||
-        localStorage.accounts === undefined
-      ) {
-        const accounts = [
-          {
-            id: 1,
-            userId: 1,
-            firstname: null,
-            lastname: null,
-            phone: null,
-            companyName: null,
-            companyAddress: null,
-            siret: null,
-            offer: null
-          }
-        ];
-        localStorage.accounts = JSON.stringify(accounts);
-      }
-      if (
-        localStorage.customers === null ||
-        localStorage.customers === undefined
-      ) {
-        const customers = [];
-        for (let i = 1; i <= 21; i++) {
-          const customer = {
-            id: null,
-            userId: null,
-            customerCompany: null,
-            customerEmail: null,
-            customerPhone: null,
-            customerAddress: null
-          };
-          customer.id = i;
-          customer.userId = Math.floor(Math.random() * Math.floor(2)) + 1;
-          customer.customerCompany = this.randomString("string", 12);
-          customer.customerPhone = this.randomString("number", 10);
-          customer.customerEmail = this.randomString("string", 18);
-          customer.customerAddress = this.randomString("string", 20);
-          customers.push(customer);
-        }
-        localStorage.customers = JSON.stringify(customers);
-      }
-    },
-    randomString(type, length) {
-      let result = "";
-      const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-      const number = "0123456789";
-      if (type === "string") {
-        const charactersLength = characters.length;
-        for (let i = 0; i < length; i++) {
-          result += characters.charAt(
-            Math.floor(Math.random() * charactersLength)
-          );
-        }
-      } else {
-        const charactersLength = number.length;
-        for (let i = 0; i < length; i++) {
-          result += number.charAt(Math.floor(Math.random() * charactersLength));
-        }
-      }
-      return result;
+      this.initDataService.initUsers();
+      this.initDataService.initAccounts();
+      this.initDataService.initCustomers();
+      this.initDataService.initMissions();
     }
   }
 };

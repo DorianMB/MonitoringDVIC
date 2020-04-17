@@ -28,10 +28,15 @@
         </div>
       </div>
       <div class="row mar-t-10">
-        <button class="btn btn-lg btn-success" @click="showModal()">
+        <button class="btn btn-lg btn-success" @click="showEditModal()">
           Modifier
         </button>
-        <button class="btn btn-lg btn-danger mar-l-8">Supprimer</button>
+        <button
+          class="btn btn-lg btn-danger mar-l-8"
+          @click="showDeleteModal()"
+        >
+          Supprimer
+        </button>
       </div>
     </div>
     <modals-container @close="updateCustomer" />
@@ -43,6 +48,7 @@ import Navbar from "@/components/Navbar";
 import EditCustomer from "@/components/modals/EditCustomer";
 import ToastService from "@/services/toast.service";
 import CustomerService from "@/services/customer.service";
+import DeleteConfirmation from "@/components/modals/DeleteConfirmation";
 
 export default {
   name: "CustomerDetails",
@@ -71,16 +77,36 @@ export default {
     }
   },
   methods: {
-    updateCustomer(value) {
-      if (value !== null) {
-        this.customer = value;
+    updateCustomer(result) {
+      if (result && result.mustDeleted) {
+        this.customerService.deleteCustomer(result.value.id);
+        this.$router.push({ name: "Customers" });
+      } else if (result) {
+        this.customer = result;
       }
     },
-    showModal() {
+    showEditModal() {
       this.$modal.show(
         EditCustomer,
         {
           customer: { ...this.customer }
+        },
+        {
+          adaptive: true,
+          scrollable: true,
+          height: "auto"
+        }
+      );
+    },
+    showDeleteModal() {
+      this.$modal.show(
+        DeleteConfirmation,
+        {
+          item: {
+            type: "client",
+            value: { ...this.customer },
+            mustDeleted: false
+          }
         },
         {
           adaptive: true,

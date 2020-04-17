@@ -44,6 +44,7 @@ export default {
   components: { Navbar },
   data: () => {
     return {
+      toastService: new ToastService(),
       credentials: {
         email: null,
         password: null,
@@ -60,11 +61,21 @@ export default {
           user.password === this.credentials.password
       );
       if (res) {
-        this.toastService.showToast(this, "Connection réussie", "toast-success", "Ok");
+        this.toastService.showToast(
+          this,
+          "Connection réussie",
+          "toast-success",
+          "Ok"
+        );
         localStorage.currentUser = JSON.stringify(res);
         this.$router.push({ name: "ConnectedHome" });
       } else {
-        this.toastService.showToast(this, "Une erreur est survenue", "toast-danger", "Ok");
+        this.toastService.showToast(
+          this,
+          "Une erreur est survenue",
+          "toast-danger",
+          "Ok"
+        );
       }
     }
   }

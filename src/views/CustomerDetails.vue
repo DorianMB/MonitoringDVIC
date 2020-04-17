@@ -80,6 +80,12 @@ export default {
     updateCustomer(result) {
       if (result && result.mustDeleted) {
         this.customerService.deleteCustomer(result.value.id);
+        this.toastService.showToast(
+          this,
+          "ce client a bien été supprimé",
+          "toast-success",
+          "Ok"
+        );
         this.$router.push({ name: "Customers" });
       } else if (result) {
         this.customer = result;

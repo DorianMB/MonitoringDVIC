@@ -23,6 +23,7 @@ import CustomTable from "@/components/CustomTable";
 import settings from "@/views/tables-settings/customers-settings";
 import EditCustomer from "@/components/modals/EditCustomer";
 import CustomerService from "@/services/customer.service";
+import ToastService from "@/services/toast.service";
 
 export default {
   name: "Customers",
@@ -30,6 +31,7 @@ export default {
   data: () => {
     return {
       customerService: new CustomerService(),
+      toastService: new ToastService(),
       currentUser: JSON.parse(localStorage.currentUser),
       settings: settings(),
       customers: null,
@@ -45,6 +47,12 @@ export default {
     modalClose(result) {
       if (result.mustDeleted) {
         this.customerService.deleteCustomer(result.value.id);
+        this.toastService.showToast(
+          this,
+          "ce client a bien été supprimé",
+          "toast-success",
+          "Ok"
+        );
       }
       this.updateCustomers();
     },

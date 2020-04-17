@@ -66,12 +66,14 @@
 
 <script>
 import CustomerService from "@/services/customer.service";
+import ToastService from "@/services/toast.service";
 
 export default {
   name: "EditCustomer",
   data: () => {
     return {
-      customerService: new CustomerService()
+      customerService: new CustomerService(),
+      toastService: new ToastService(),
     };
   },
   props: {
@@ -93,9 +95,21 @@ export default {
     saveCustomer() {
       if (this.customer.id) {
         this.customerService.updateCustomer(this.customer);
+        this.toastService.showToast(
+          this,
+          "les modifications ont été sauvegardées",
+          "toast-success",
+          "Ok"
+        );
       } else {
         const currentUser = JSON.parse(localStorage.currentUser);
         this.customerService.saveCustomer(this.customer, currentUser.id);
+        this.toastService.showToast(
+          this,
+          "Le nouveau client a bien été crée",
+          "toast-success",
+          "Ok"
+        );
       }
       this.close(this.customer);
     },

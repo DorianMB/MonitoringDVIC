@@ -125,4 +125,6 @@ export default class InitDataService {
       localStorage.missions = JSON.stringify(missions);
     }
   }
+
+  //TODO: ajouter au readme le fait que le premier utilisateur qui sera créé aura aussi des jeux de données généré automatiquement pour les test
 }

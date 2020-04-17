@@ -2,25 +2,36 @@ import router from "../../router";
 
 import EditCustomer from '../../components/modals/EditCustomer.vue'
 import DeleteConfirmation from '../../components/modals/DeleteConfirmation.vue'
+import CustomerService from '../../services/customer.service'
+
+const customerService = new CustomerService();
 
 export default function () {
   return {
     column: {
-      customerCompany: {
-        title: "nom de l'entreprise",
+      missionTitle: {
+        title: "intitulé de la mission",
       },
-      customerEmail: {
-        title: "email"
+      customerId: {
+        title: "client",
+        valuePrepareFunction: (mission: any) => {
+          return customerService.getCustomerById(mission.customerId).customerCompany;
+        }
       },
-      customerPhone: {
-        title: "phone"
+      missionEndDate: {
+        title: "date de fin de mission",
+        valuePrepareFunction: (mission: any) => {
+          const res = new Date(mission.missionEndDate);
+          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+          return res.toLocaleDateString('fr-FR', options);
+        }
       }
     },
     actions: {
       show: {
         icon: "Details",
         class: "btn-info",
-        prepareFunction: (value: any, modal: any) => router.push({name: "CustomerDetails", params: { id: value.id }})
+        prepareFunction: (value: any, modal: any) => router.push({name: "MissionDetails", params: { id: value.id }})
       },
       edit: {
         icon: "Modifier",

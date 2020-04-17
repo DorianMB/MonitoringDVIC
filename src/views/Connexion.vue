@@ -26,7 +26,7 @@
             v-model="credentials.password"
           />
         </div>
-        <button class="btn btn-primary mar-t-4" v-on:click="testConnexion">
+        <button class="btn btn-primary mar-t-4" @click="testConnexion">
           Se connecter
         </button>
       </div>
@@ -37,6 +37,7 @@
 <script>
 // @ is an alias to /src
 import Navbar from "@/components/Navbar";
+import ToastService from "@/services/toast.service";
 
 export default {
   name: "Connexion",
@@ -45,26 +46,12 @@ export default {
     return {
       credentials: {
         email: null,
-        password: null
+        password: null,
+        toastService: new ToastService()
       }
     };
   },
   methods: {
-    getToastOptions(className, actionText) {
-      return {
-        theme: "outline",
-        className: className,
-        position: "top-center",
-        fullWidth: true,
-        action: {
-          text: actionText,
-          onClick: (e, toastObject) => {
-            toastObject.goAway(0);
-          }
-        },
-        duration: 4000
-      };
-    },
     testConnexion() {
       const users = JSON.parse(localStorage.users);
       const res = users.find(
@@ -73,17 +60,11 @@ export default {
           user.password === this.credentials.password
       );
       if (res) {
-        this.$toasted.show(
-          "Connection réussie",
-          this.getToastOptions("toast-success", "Ok")
-        );
+        this.toastService.showToast(this, "Connection réussie", "toast-success", "Ok");
         localStorage.currentUser = JSON.stringify(res);
         this.$router.push({ name: "ConnectedHome" });
       } else {
-        this.$toasted.show(
-          "Une erreur est survenue",
-          this.getToastOptions("toast-danger", "Ok")
-        );
+        this.toastService.showToast(this, "Une erreur est survenue", "toast-danger", "Ok");
       }
     }
   }

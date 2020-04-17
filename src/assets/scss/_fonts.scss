@@ -59,3 +59,15 @@ h3 {
 }
 
 @include fs;
+
+@mixin fw {
+  $i: 100;
+  @while $i < 1000 {
+    .fw-#{$i} {
+      font-weight: #{$i};
+    }
+    $i: $i + 100;
+  }
+}
+
+@include fw;

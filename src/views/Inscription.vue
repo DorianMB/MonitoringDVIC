@@ -1,10 +1,19 @@
 <template>
   <div>
     <navbar></navbar>
-    <div class="inscription d-flex flex-column justify-content-center align-items-center">
-      <div id="inscription-card" class="card-layout d-flex flex-column align-items-center">
+    <div
+      class="inscription d-flex flex-column justify-content-center align-items-center"
+    >
+      <div
+        id="inscription-card"
+        class="card-layout d-flex flex-column align-items-center"
+      >
         <h1 class="mar-b-0">Inscription</h1>
-        <div v-if="currentStep === 1" id="step1" class="w-100 d-flex flex-column align-items-center">
+        <div
+          v-if="currentStep === 1"
+          id="step1"
+          class="w-100 d-flex flex-column align-items-center"
+        >
           <div class="group-input-label mar-t-2">
             <label for="email">Email</label>
             <input
@@ -35,7 +44,11 @@
             />
           </div>
         </div>
-        <div v-else-if="currentStep === 2" id="step2" class="w-100 d-flex flex-column align-items-center">
+        <div
+          v-else-if="currentStep === 2"
+          id="step2"
+          class="w-100 d-flex flex-column align-items-center"
+        >
           <div class="group-input-label mar-t-2">
             <label for="firstname">Prénom du gérant</label>
             <input
@@ -67,7 +80,11 @@
             />
           </div>
         </div>
-        <div v-else-if="currentStep === 3" id="step3" class="w-100 d-flex flex-column align-items-center">
+        <div
+          v-else-if="currentStep === 3"
+          id="step3"
+          class="w-100 d-flex flex-column align-items-center"
+        >
           <div class="group-input-label mar-t-2">
             <label for="companyName">Nom de l'entreprise</label>
             <input
@@ -99,26 +116,33 @@
             />
           </div>
         </div>
-        <div v-else-if="currentStep === 4" id="step4" class="w-100 d-flex flex-column align-items-center">
+        <div
+          v-else-if="currentStep === 4"
+          id="step4"
+          class="w-100 d-flex flex-column align-items-center"
+        >
           <div class="w-75 mar-t-3 row">
             <button
               class="btn offset-1 col-4"
-              v-on:click="priceByMonth = true"
+              @click="priceByMonth = true"
               :class="priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
             >
               Mois
             </button>
             <button
               class="btn offset-2 col-4"
-              v-on:click="priceByMonth = false"
+              @click="priceByMonth = false"
               :class="!priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
             >
               Année
             </button>
           </div>
           <div class="w-100 mar-t-5 mar-b-2 row" v-if="priceByMonth">
-            <button class="card-layout col d-flex flex-column align-items-center"
-                    v-on:click="priceChoice = 'month1'" :class="priceChoice === 'month1' ? 'price-choice' : ''">
+            <button
+              class="card-layout col d-flex flex-column align-items-center"
+              @click="priceChoice = 'month1'"
+              :class="priceChoice === 'month1' ? 'price-choice' : ''"
+            >
               <h3>Auto-entrepreneur</h3>
               <div>
                 <span class="color-primary fs-24">25</span>
@@ -126,8 +150,11 @@
                 <span class="color-secondary fs-11">/ mois</span>
               </div>
             </button>
-            <button class="card-layout col d-flex flex-column align-items-center"
-                    v-on:click="priceChoice = 'month2'" :class="priceChoice === 'month2' ? 'price-choice' : ''">
+            <button
+              class="card-layout col d-flex flex-column align-items-center"
+              @click="priceChoice = 'month2'"
+              :class="priceChoice === 'month2' ? 'price-choice' : ''"
+            >
               <h3>Auto-entrepreneur</h3>
               <div>
                 <span class="color-primary fs-24">25</span>
@@ -137,8 +164,11 @@
             </button>
           </div>
           <div class="w-100 mar-t-5 mar-b-2 row" v-if="!priceByMonth">
-            <button class="card-layout col d-flex flex-column align-items-center"
-                    v-on:click="priceChoice = 'year1'" :class="priceChoice === 'year1' ? 'price-choice' : ''">
+            <button
+              class="card-layout col d-flex flex-column align-items-center"
+              @click="priceChoice = 'year1'"
+              :class="priceChoice === 'year1' ? 'price-choice' : ''"
+            >
               <h3>Auto-entrepreneur</h3>
               <div>
                 <span class="color-primary fs-24">25</span>
@@ -146,8 +176,11 @@
                 <span class="color-secondary fs-11">/ année</span>
               </div>
             </button>
-            <button class="card-layout col d-flex flex-column align-items-center"
-                    v-on:click="priceChoice = 'year2'" :class="priceChoice === 'year2' ? 'price-choice' : ''">
+            <button
+              class="card-layout col d-flex flex-column align-items-center"
+              @click="priceChoice = 'year2'"
+              :class="priceChoice === 'year2' ? 'price-choice' : ''"
+            >
               <h3>Auto-entrepreneur</h3>
               <div>
                 <span class="color-primary fs-24">25</span>
@@ -157,13 +190,21 @@
             </button>
           </div>
         </div>
-        <button v-if="currentStep !== 4" class="btn btn-primary mar-t-4" v-on:click="nextStep()">
+        <button
+          v-if="currentStep !== 4"
+          class="btn btn-primary mar-t-4"
+          @click="nextStep()"
+        >
           Suivant
         </button>
-        <button v-else class="btn btn-primary mar-t-4" v-on:click="validSignUp">
+        <button v-else class="btn btn-primary mar-t-4" @click="validSignUp">
           Valider
         </button>
-        <stepper :steps="4" :active-step="currentStep" @newStep="updateStep"></stepper>
+        <stepper
+          :steps="4"
+          :active-step="currentStep"
+          @newStep="updateStep"
+        ></stepper>
       </div>
     </div>
   </div>
@@ -173,12 +214,14 @@
 // @ is an alias to /src
 import Navbar from "../components/Navbar";
 import Stepper from "@/components/Stepper";
+import ToastService from "@/services/toast.service";
 
 export default {
   name: "Inscription",
-  components: {Stepper, Navbar},
+  components: { Stepper, Navbar },
   data: () => {
     return {
+      toastService: new ToastService(),
       currentStep: 1,
       priceByMonth: true,
       priceChoice: null,
@@ -218,21 +261,6 @@ export default {
     updateStep(value) {
       this.currentStep = value;
     },
-    getToastOptions(className, actionText) {
-      return {
-        theme: "outline",
-        className: className,
-        position: "top-center",
-        fullWidth: true,
-        action: {
-          text: actionText,
-          onClick: (e, toastObject) => {
-            toastObject.goAway(0);
-          }
-        },
-        duration: 4000
-      };
-    },
     validSignUp() {
       const resUser = Object.keys(this.user).find(key => {
         if (this.user[key] === null) {
@@ -245,9 +273,11 @@ export default {
         }
       });
       if (resUser || resForm) {
-        this.$toasted.show(
+        this.toastService.showToast(
+          this,
           "Toute les informations n'ont pas été remplies",
-          this.getToastOptions("toast-danger", "Ok")
+          "toast-danger",
+          "Ok"
         );
       } else {
         const users = JSON.parse(localStorage.users);
@@ -263,9 +293,11 @@ export default {
         accounts.push(this.account);
         localStorage.users = JSON.stringify(users);
         localStorage.accounts = JSON.stringify(accounts);
-        this.$toasted.show(
+        this.toastService.showToast(
+          this,
           "Votre compte viens d'être créé",
-          this.getToastOptions("toast-success", "Ok")
+          "toast-success",
+          "Ok"
         );
         this.$router.push({ name: "Connexion" });
       }
@@ -275,18 +307,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .inscription {
-    width: 100vw;
-    height: 100vh;
-    background: url("../assets/images/bg-connexion.png") no-repeat top left;
-    background-size: contain;
-  }
+.inscription {
+  width: 100vw;
+  height: 100vh;
+  background: url("../assets/images/bg-connexion.png") no-repeat top left;
+  background-size: contain;
+}
 
-  .card-layout {
-    width: 28%;
+.card-layout {
+  width: 28%;
 
-    .btn-primary {
-      width: 60%;
-    }
+  .btn-primary {
+    width: 60%;
   }
+}
 </style>

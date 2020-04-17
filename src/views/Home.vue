@@ -2,7 +2,7 @@
   <div>
     <navbar></navbar>
     <div class="home">
-      <img class="mar-t-14" src="../assets/images/logo-white.png"/>
+      <img class="mar-t-14" src="../assets/images/logo-white.png" />
       <div class="row mar-t-16">
         <p class="offset-2 col-8 text-center color-white fs-16">
           Le site de monitoring d’entreprise spécialement consue pour les PME et
@@ -14,8 +14,17 @@
       </div>
       <div class="row mar-t-16">
         <div class="offset-2 col-8">
-          <router-link tag="button" to="/connexion" class="btn btn-xl btn-outline-primary">Connexion</router-link>
-          <router-link tag="button" to="/inscription" class="btn btn-xl btn-outline-primary ml-5">
+          <router-link
+            tag="button"
+            to="/connexion"
+            class="btn btn-xl btn-outline-primary"
+            >Connexion</router-link
+          >
+          <router-link
+            tag="button"
+            to="/inscription"
+            class="btn btn-xl btn-outline-primary ml-5"
+          >
             Inscription
           </router-link>
         </div>
@@ -65,14 +74,14 @@
         <div class="offset-2 col-8">
           <button
             class="btn btn-lg"
-            v-on:click="priceByMonth = true"
+            @click="priceByMonth = true"
             :class="priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
           >
             Mois
           </button>
           <button
             class="btn btn-lg ml-5"
-            v-on:click="priceByMonth = false"
+            @click="priceByMonth = false"
             :class="!priceByMonth ? 'btn-primary' : 'btn-outline-primary'"
           >
             Année
@@ -165,7 +174,7 @@ import Navbar from "@/components/Navbar";
 
 export default {
   name: "Home",
-  components: {Navbar},
+  components: { Navbar },
   data: () => {
     return {
       height: window.innerHeight,
@@ -181,9 +190,7 @@ export default {
     navbar.classList.add("d-none");
   },
   beforeMount() {
-    if (localStorage.users === null || localStorage.users === undefined) {
-      this.initData();
-    }
+    this.initData();
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -195,7 +202,7 @@ export default {
       if (event.path[1].pageYOffset >= this.height - 100) {
         navbar.classList.remove("d-none");
         const pourcentage = this.getPourcentage(
-          (event.path[1].pageYOffset - this.height)
+          event.path[1].pageYOffset - this.height
         );
         navbar.style.backgroundColor = "red";
         navbar.style.opacity = (pourcentage + 100) / 100;
@@ -207,82 +214,133 @@ export default {
       return number / 1.2;
     },
     initData() {
-      const users = [
-        {
-          id: 1,
-          email: "admin@admin.fr",
-          password: "admin"
+      if (localStorage.users === null || localStorage.users === undefined) {
+        const users = [
+          {
+            id: 1,
+            email: "admin@admin.fr",
+            password: "admin"
+          }
+        ];
+        localStorage.users = JSON.stringify(users);
+      }
+      if (
+        localStorage.accounts === null ||
+        localStorage.accounts === undefined
+      ) {
+        const accounts = [
+          {
+            id: 1,
+            userId: 1,
+            firstname: null,
+            lastname: null,
+            phone: null,
+            companyName: null,
+            companyAddress: null,
+            siret: null,
+            offer: null
+          }
+        ];
+        localStorage.accounts = JSON.stringify(accounts);
+      }
+      if (
+        localStorage.customers === null ||
+        localStorage.customers === undefined
+      ) {
+        const customers = [];
+        for (let i = 1; i <= 21; i++) {
+          const customer = {
+            id: null,
+            userId: null,
+            customerCompany: null,
+            customerEmail: null,
+            customerPhone: null,
+            customerAddress: null
+          };
+          customer.id = i;
+          customer.userId = Math.floor(Math.random() * Math.floor(2)) + 1;
+          customer.customerCompany = this.randomString("string", 12);
+          customer.customerPhone = this.randomString("number", 10);
+          customer.customerEmail = this.randomString("string", 18);
+          customer.customerAddress = this.randomString("string", 20);
+          customers.push(customer);
         }
-      ]
-      const accounts = [
-        {
-          id: 1,
-          userId: 1,
-          firstname: null,
-          lastname: null,
-          phone: null,
-          companyName: null,
-          companyAddress: null,
-          siret: null,
-          offer: null
+        localStorage.customers = JSON.stringify(customers);
+      }
+    },
+    randomString(type, length) {
+      let result = "";
+      const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+      const number = "0123456789";
+      if (type === "string") {
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+          result += characters.charAt(
+            Math.floor(Math.random() * charactersLength)
+          );
         }
-      ];
-      localStorage.users = JSON.stringify(users);
-      localStorage.accounts = JSON.stringify(accounts);
+      } else {
+        const charactersLength = number.length;
+        for (let i = 0; i < length; i++) {
+          result += number.charAt(Math.floor(Math.random() * charactersLength));
+        }
+      }
+      return result;
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-  .home {
-    background: url("../assets/images/bg-top-home.png") no-repeat top center,
+.home {
+  background: url("../assets/images/bg-top-home.png") no-repeat top center,
     url("../assets/images/bg-bottom-home.png") no-repeat bottom center;
-    background-size: contain;
+  background-size: contain;
 
-    img.mar-t-14 {
-      @media (max-width: 1920px) and (min-width: 1660px) {
-        margin-top: 160px;
-      }
-    }
-  }
-
-  .card-info {
-    width: 20%;
-    height: 400px;
-  }
-
-  .card-price {
-    width: 25%;
-    margin: 0 2%;
-    height: 400px;
-  }
-
-  .btn.btn-lg {
-    width: 15%;
-  }
-
-  .row.mar-t-16 {
+  img.mar-t-14 {
     @media (max-width: 1920px) and (min-width: 1660px) {
       margin-top: 160px;
     }
   }
+}
 
-  .color-black.mar-t-42 {
-    @media (max-width: 1920px) and (min-width: 1660px) {
-      margin-top: 500px;
-    }
-  }
+.card-info {
+  width: 20%;
+  height: 400px;
+}
 
-  .row.mar-t-6 {
-    @media (max-width: 1920px) and (min-width: 1660px) {
-      margin-top: 160px;
-    }
-  }
+.card-price {
+  width: 25%;
+  margin: 0 2%;
+  height: 400px;
+}
 
-  #price-month, #price-year {
-    @media (max-width: 1920px) and (min-width: 1660px) {
-      margin-top: 160px;
-    }
+.btn.btn-lg {
+  width: 15%;
+}
+
+.row.mar-t-16 {
+  @media (max-width: 1920px) and (min-width: 1660px) {
+    margin-top: 160px;
   }
+}
+
+.color-black.mar-t-42 {
+  @media (max-width: 1920px) and (min-width: 1660px) {
+    margin-top: 500px;
+  }
+}
+
+.row.mar-t-6 {
+  @media (max-width: 1920px) and (min-width: 1660px) {
+    margin-top: 160px;
+  }
+}
+
+#price-month,
+#price-year {
+  @media (max-width: 1920px) and (min-width: 1660px) {
+    margin-top: 160px;
+  }
+}
 </style>

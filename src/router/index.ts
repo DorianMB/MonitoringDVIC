@@ -5,6 +5,7 @@ import Connexion from "../views/Connexion.vue";
 import Inscription from "../views/Inscription.vue";
 import ConnectedHome from "../views/ConnectedHome.vue";
 import Customers from "../views/Customers.vue";
+import CustomerDetails from "../views/CustomerDetails.vue";
 
 Vue.use(VueRouter);
 
@@ -37,6 +38,15 @@ const routes = [
     path: "/customers",
     name: "Customers",
     component: Customers,
+    beforeEnter: (to:any, from:any, next:any) => {
+      if (!localStorage.currentUser) next({ name: 'Connexion' });
+      else next();
+    }
+  },
+  {
+    path: "/customer/:id",
+    name: "CustomerDetails",
+    component: CustomerDetails,
     beforeEnter: (to:any, from:any, next:any) => {
       if (!localStorage.currentUser) next({ name: 'Connexion' });
       else next();

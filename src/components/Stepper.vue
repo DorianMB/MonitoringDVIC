@@ -1,7 +1,7 @@
 <template>
   <div class="stepper-container">
     <template v-for="step in steps">
-      <div class="stepper-point" :key="step" :class="step === activeStep ? 'stepper-point-active' : ''" v-on:click="updateStep(step)"></div>
+      <div class="stepper-point" :key="step" :class="step === activeStep ? 'stepper-point-active' : ''" @click="updateStep(step)"></div>
     </template>
   </div>
 </template>

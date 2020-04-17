@@ -49,7 +49,7 @@ export default {
         this.missionService.deleteMission(result.value.id);
         this.toastService.showToast(
           this,
-          "ce client a bien été supprimé",
+          "cette mission a bien été supprimée",
           "toast-success",
           "Ok"
         );

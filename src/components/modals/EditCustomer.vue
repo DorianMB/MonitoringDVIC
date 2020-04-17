@@ -65,8 +65,15 @@
 </template>
 
 <script>
+import CustomerService from "@/services/customer.service";
+
 export default {
   name: "EditCustomer",
+  data: () => {
+    return {
+      customerService: new CustomerService()
+    };
+  },
   props: {
     customer: {
       type: Object,
@@ -84,25 +91,12 @@ export default {
   },
   methods: {
     saveCustomer() {
-      const customerList = JSON.parse(localStorage.customers);
       if (this.customer.id) {
-        const index = customerList.findIndex(
-          item => (item.id = this.customer.id)
-        );
-        customerList[index] = this.customer;
+        this.customerService.updateCustomer(this.customer);
       } else {
         const currentUser = JSON.parse(localStorage.currentUser);
-        this.customer.userId = currentUser.id;
-        let max = 0;
-        customerList.forEach(item => {
-          if (item.id > max) {
-            max = item.id;
-          }
-        });
-        this.customer.id = max + 1;
-        customerList.push(this.customer);
+        this.customerService.saveCustomer(this.customer, currentUser.id);
       }
-      localStorage.customers = JSON.stringify(customerList);
       this.close(this.customer);
     },
     close(value) {

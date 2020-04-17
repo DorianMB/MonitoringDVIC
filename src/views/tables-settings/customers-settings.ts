@@ -1,6 +1,8 @@
 import router from "../../router";
 
 import EditCustomer from '../../components/modals/EditCustomer.vue'
+import DeleteConfirmation from '../../components/modals/DeleteConfirmation.vue'
+import CustomerService from '../../services/customer.service'
 
 export default function () {
   return {
@@ -28,7 +30,6 @@ export default function () {
           modal.show(EditCustomer, {
             customer: {...value}
           }, {
-            draggable: true,
             adaptive: true,
             scrollable: true,
             height: 'auto'
@@ -39,10 +40,13 @@ export default function () {
         icon: "Supprimer",
         class: "btn-danger",
         prepareFunction: (value: any, modal: any) => {
-          modal.show(EditCustomer, {
-            customer: {...value}
+          modal.show(DeleteConfirmation, {
+            item: {
+              type: "client",
+              value: {...value},
+              mustDeleted: false
+            }
           }, {
-            draggable: true,
             adaptive: true,
             scrollable: true,
             height: 'auto'

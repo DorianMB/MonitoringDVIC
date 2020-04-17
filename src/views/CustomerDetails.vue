@@ -7,12 +7,24 @@
       <h1>Détails du client</h1>
       <div class="card-layout flex-row row fs-14">
         <div class="col">
-          <p><span class="fw-800">nom de l'entreprise : </span>{{ customer ? customer.customerCompany : "" }}</p>
-          <p><span class="fw-800">adrresse du client : </span>{{ customer ? customer.customerAddress : "" }}</p>
+          <p>
+            <span class="fw-800">nom de l'entreprise : </span
+            >{{ customer ? customer.customerCompany : "" }}
+          </p>
+          <p>
+            <span class="fw-800">adrresse du client : </span
+            >{{ customer ? customer.customerAddress : "" }}
+          </p>
         </div>
         <div class="col">
-          <p><span class="fw-800">email du client : </span>{{ customer ? customer.customerEmail : "" }}</p>
-          <p><span class="fw-800">téléphone du client : </span>{{ customer ? customer.customerPhone : "" }}</p>
+          <p>
+            <span class="fw-800">email du client : </span
+            >{{ customer ? customer.customerEmail : "" }}
+          </p>
+          <p>
+            <span class="fw-800">téléphone du client : </span
+            >{{ customer ? customer.customerPhone : "" }}
+          </p>
         </div>
       </div>
       <div class="row mar-t-10">
@@ -22,55 +34,43 @@
         <button class="btn btn-lg btn-danger mar-l-8">Supprimer</button>
       </div>
     </div>
-    <modals-container @close="updateCustomer"/>
+    <modals-container @close="updateCustomer" />
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar";
 import EditCustomer from "@/components/modals/EditCustomer";
+import ToastService from "@/services/toast.service";
+import CustomerService from "@/services/customer.service";
 
 export default {
   name: "CustomerDetails",
-  components: {Navbar},
+  components: { Navbar },
   data: () => {
     return {
       currentUser: null,
       id: null,
-      customer: null
+      customer: null,
+      toastService: new ToastService(),
+      customerService: new CustomerService()
     };
   },
   beforeMount() {
     this.currentUser = JSON.parse(localStorage.currentUser);
     this.id = this.$router.currentRoute.params.id;
-    const customers = JSON.parse(localStorage.customers);
-    this.customer = customers.find(element => {
-      return element.id.toString() === this.id.toString();
-    });
+    this.customer = this.customerService.getCustomerById(this.id);
     if (this.customer.userId !== this.currentUser.id) {
-      this.$toasted.show(
+      this.toastService.showToast(
+        this,
         "Vous n'etes pas autorisé a voir cette page",
-        this.getToastOptions("toast-danger", "Ok")
+        "toast-danger",
+        "Ok"
       );
-      this.$router.push({name: "Customers"});
+      this.$router.push({ name: "Customers" });
     }
   },
   methods: {
-    getToastOptions(className, actionText) {
-      return {
-        theme: "outline",
-        className: className,
-        position: "top-center",
-        fullWidth: true,
-        action: {
-          text: actionText,
-          onClick: (e, toastObject) => {
-            toastObject.goAway(0);
-          }
-        },
-        duration: 4000
-      };
-    },
     updateCustomer(value) {
       if (value !== null) {
         this.customer = value;
@@ -83,30 +83,30 @@ export default {
           customer: { ...this.customer }
         },
         {
-          draggable: true,
           adaptive: true,
           scrollable: true,
           height: "auto"
-      })
+        }
+      );
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-  .customer-details {
-    width: 100vw;
-    min-height: 100vh;
-    background: url("../assets/images/bg-tables.png") top center;
-    background-size: 100vw auto;
+.customer-details {
+  width: 100vw;
+  min-height: 100vh;
+  background: url("../assets/images/bg-tables.png") top center;
+  background-size: 100vw auto;
 
-    .card-layout {
-      width: 80%;
-      @extend .mar-t-10;
+  .card-layout {
+    width: 80%;
+    @extend .mar-t-10;
 
-      p {
-        padding-top: 18px;
-      }
+    p {
+      padding-top: 18px;
     }
   }
+}
 </style>

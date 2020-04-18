@@ -109,7 +109,7 @@ export default {
         DeleteConfirmation,
         {
           item: {
-            type: "client",
+            type: "ce client",
             value: { ...this.customer },
             mustDeleted: false
           }

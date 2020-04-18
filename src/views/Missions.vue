@@ -21,7 +21,7 @@
 import Navbar from "@/components/Navbar";
 import CustomTable from "@/components/CustomTable";
 import settings from "@/views/tables-settings/missions-settings";
-import EditCustomer from "@/components/modals/EditCustomer";
+import EditMssion from "@/components/modals/EditMission";
 import ToastService from "@/services/toast.service";
 import MissionService from "@/services/mission.service";
 
@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     modalClose(result) {
-      if (result.mustDeleted) {
+      if (result && result.mustDeleted) {
         this.missionService.deleteMission(result.value.id);
         this.toastService.showToast(
           this,
@@ -63,7 +63,7 @@ export default {
     },
     showModal() {
       this.$modal.show(
-        EditCustomer,
+        EditMssion,
         {
           mission: {}
         },

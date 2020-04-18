@@ -14,7 +14,7 @@
         <div class="group-input-label mar-t-2">
           <label for="customerCompany">Nom de l'entreprise</label>
           <input
-            type="email"
+            type="text"
             class="form-control"
             id="customerCompany"
             placeholder="nom de l'entreprise"
@@ -24,7 +24,7 @@
         <div class="group-input-label mar-t-2">
           <label for="customerAddress">Adrresse du client</label>
           <input
-            type="email"
+            type="text"
             class="form-control"
             id="customerAddress"
             placeholder="adrresse du client"
@@ -44,7 +44,7 @@
         <div class="group-input-label mar-t-2">
           <label for="customerPhone">Téléphone du client</label>
           <input
-            type="email"
+            type="text"
             class="form-control"
             id="customerPhone"
             placeholder="téléphone du client"
@@ -106,7 +106,7 @@ export default {
         this.customerService.saveCustomer(this.customer, currentUser.id);
         this.toastService.showToast(
           this,
-          "Le nouveau client a bien été crée",
+          "Le nouveau client a bien été créé",
           "toast-success",
           "Ok"
         );

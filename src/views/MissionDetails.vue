@@ -1,26 +1,40 @@
 <template>
   <div>
     <navbar :current-user="currentUser"></navbar>
-    <div
-      class="mission-details d-flex flex-column align-items-center pad-t-12"
-    >
+    <div class="mission-details d-flex flex-column align-items-center pad-t-12">
       <h1>Détails de la mission</h1>
       <div class="card-layout flex-row row fs-14">
-        <div class="col">
+        <div class="col-12">
           <p>
             <span class="fw-800">intitulé de la mission : </span
             >{{ mission ? mission.missionTitle : "" }}
           </p>
+        </div>
+        <div class="col-12">
           <p>
             <span class="fw-800">description de la mission : </span
             >{{ mission ? mission.missionDescription : "" }}
           </p>
         </div>
-        <div class="col">
+        <div class="col-6">
+          <p>
+            <span class="fw-800">client de la mission : </span
+            >{{ mission ? customerService.getCustomerById(mission.customerId).customerCompany : "" }}
+          </p>
+        </div>
+        <div class="col-6">
+          <p>
+            <span class="fw-800">email du client : </span
+            >{{ mission ? customerService.getCustomerById(mission.customerId).customerEmail : "" }}
+          </p>
+        </div>
+        <div class="col-6">
           <p>
             <span class="fw-800">Début de la mission : </span
             >{{ mission ? mission.missionStartDate : "" }}
           </p>
+        </div>
+        <div class="col-6">
           <p>
             <span class="fw-800">Fin de la mission : </span
             >{{ mission ? mission.missionEndDate : "" }}
@@ -45,10 +59,11 @@
 
 <script>
 import Navbar from "@/components/Navbar";
-import EditCustomer from "@/components/modals/EditCustomer";
+import EditMission from "@/components/modals/EditMission";
 import ToastService from "@/services/toast.service";
 import MissionService from "@/services/mission.service";
 import DeleteConfirmation from "@/components/modals/DeleteConfirmation";
+import CustomerService from "@/services/customer.service";
 
 export default {
   name: "MissionDetails",
@@ -59,7 +74,8 @@ export default {
       id: null,
       mission: null,
       toastService: new ToastService(),
-      missionService: new MissionService()
+      missionService: new MissionService(),
+      customerService: new CustomerService()
     };
   },
   beforeMount() {
@@ -93,7 +109,7 @@ export default {
     },
     showEditModal() {
       this.$modal.show(
-        EditCustomer,
+        EditMission,
         {
           mission: { ...this.mission }
         },
@@ -109,7 +125,7 @@ export default {
         DeleteConfirmation,
         {
           item: {
-            type: "mission",
+            type: "cette mission",
             value: { ...this.mission },
             mustDeleted: false
           }

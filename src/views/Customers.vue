@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     modalClose(result) {
-      if (result.mustDeleted) {
+      if (result && result.mustDeleted) {
         this.customerService.deleteCustomer(result.value.id);
         this.toastService.showToast(
           this,

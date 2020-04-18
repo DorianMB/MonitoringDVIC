@@ -41,7 +41,7 @@ export default function () {
         prepareFunction: (value: any, modal: any) => {
           modal.show(DeleteConfirmation, {
             item: {
-              type: "client",
+              type: "ce client",
               value: {...value},
               mustDeleted: false
             }

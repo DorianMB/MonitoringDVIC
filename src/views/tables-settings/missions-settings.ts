@@ -1,6 +1,6 @@
 import router from "../../router";
 
-import EditCustomer from '../../components/modals/EditCustomer.vue'
+import EditMission from '../../components/modals/EditMission.vue'
 import DeleteConfirmation from '../../components/modals/DeleteConfirmation.vue'
 import CustomerService from '../../services/customer.service'
 
@@ -37,8 +37,8 @@ export default function () {
         icon: "Modifier",
         class: "btn-success",
         prepareFunction: (value: any, modal: any) => {
-          modal.show(EditCustomer, {
-            customer: {...value}
+          modal.show(EditMission, {
+            mission: {...value}
           }, {
             adaptive: true,
             scrollable: true,
@@ -52,7 +52,7 @@ export default function () {
         prepareFunction: (value: any, modal: any) => {
           modal.show(DeleteConfirmation, {
             item: {
-              type: "client",
+              type: "cette mission",
               value: {...value},
               mustDeleted: false
             }

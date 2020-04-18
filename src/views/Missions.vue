@@ -2,14 +2,14 @@
   <div>
     <navbar :current-user="currentUser"></navbar>
     <div
-      class="customers d-flex flex-column justify-content-center align-items-center"
+      class="missions d-flex flex-column justify-content-center align-items-center"
     >
-      <div id="addCustomer" class="w-75 d-flex flex-row justify-content-end">
-        <button class="btn btn-success" @click="showModal">+ Client</button>
+      <div id="addMission" class="w-75 d-flex flex-row justify-content-end">
+        <button class="btn btn-success" @click="showModal">+ Mission</button>
       </div>
       <custom-table
         :settings="settings"
-        :values="customers"
+        :values="missions"
         class="custom-table"
       ></custom-table>
     </div>
@@ -20,36 +20,36 @@
 <script>
 import Navbar from "@/components/Navbar";
 import CustomTable from "@/components/CustomTable";
-import settings from "@/views/tables-settings/customers-settings";
-import EditCustomer from "@/components/modals/EditCustomer";
-import CustomerService from "@/services/customer.service";
+import settings from "@/views/tables-settings/missions-settings";
+import EditMssion from "@/components/modals/EditMission";
 import ToastService from "@/services/toast.service";
+import MissionService from "@/services/mission.service";
 
 export default {
-  name: "Customers",
+  name: "Missions",
   components: { CustomTable, Navbar },
   data: () => {
     return {
-      customerService: new CustomerService(),
+      missionService: new MissionService(),
       toastService: new ToastService(),
       currentUser: JSON.parse(localStorage.currentUser),
       settings: settings(),
-      customers: null,
-      customer: null
+      missions: null,
+      mission: null
     };
   },
   beforeMount() {
-    this.customers = this.customerService.getCustomersByUserId(
+    this.missions = this.missionService.getMissionsByUserId(
       this.currentUser.id
     );
   },
   methods: {
     modalClose(result) {
       if (result && result.mustDeleted) {
-        this.customerService.deleteCustomer(result.value.id);
+        this.missionService.deleteMission(result.value.id);
         this.toastService.showToast(
           this,
-          "ce client a bien été supprimé",
+          "cette mission a bien été supprimée",
           "toast-success",
           "Ok"
         );
@@ -57,15 +57,15 @@ export default {
       this.updateCustomers();
     },
     updateCustomers() {
-      this.customers = this.customerService.getCustomersByUserId(
+      this.missions = this.missionService.getMissionsByUserId(
         this.currentUser.id
       );
     },
     showModal() {
       this.$modal.show(
-        EditCustomer,
+        EditMssion,
         {
-          customer: {}
+          mission: {}
         },
         {
           adaptive: true,
@@ -79,20 +79,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.customers {
-  width: 100vw;
-  min-height: 100vh;
-  background: url("../assets/images/bg-tables.png") top center;
-  background-size: 100vw auto;
+  .missions {
+    width: 100vw;
+    min-height: 100vh;
+    background: url("../assets/images/bg-tables.png") top center;
+    background-size: 100vw auto;
 
-  #addCustomer {
-    @extend .mar-t-14;
-    @extend .mar-b-4;
-  }
+    #addMission {
+      @extend .mar-t-14;
+      @extend .mar-b-4;
+    }
 
-  .custom-table {
-    width: 80%;
-    @extend .mar-b-10;
+    .custom-table {
+      width: 80%;
+      @extend .mar-b-10;
+    }
   }
-}
 </style>

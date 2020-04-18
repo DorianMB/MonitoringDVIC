@@ -9,7 +9,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <p class="fs-16 text-center mar-t-2">Voulez vous vraiment supprimer ce {{ item.type }}</p>
+      <p class="fs-16 text-center mar-t-2">Voulez vous vraiment supprimer {{ item.type }}</p>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" @click="close()">

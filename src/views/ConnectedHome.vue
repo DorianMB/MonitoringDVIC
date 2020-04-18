@@ -10,13 +10,13 @@
           />
           <h3>Vos clients</h3>
         </router-link>
-        <button class="card-layout d-flex flex-column align-items-center">
+        <router-link tag="button" to="/missions" class="card-layout d-flex flex-column align-items-center">
           <img
             src="../assets/images/card-missions.jpeg"
             class="img-fluid img-card-top"
           />
           <h3>Vos Missions</h3>
-        </button>
+        </router-link>
         <button class="card-layout d-flex flex-column align-items-center">
           <img
             src="../assets/images/card-stats.jpeg"

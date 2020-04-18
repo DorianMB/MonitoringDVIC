@@ -1,29 +1,43 @@
 <template>
   <div>
     <navbar :current-user="currentUser"></navbar>
-    <div
-      class="customer-details d-flex flex-column align-items-center pad-t-12"
-    >
-      <h1>Détails du client</h1>
+    <div class="mission-details d-flex flex-column align-items-center pad-t-12">
+      <h1>Détails de la mission</h1>
       <div class="card-layout flex-row row fs-14">
-        <div class="col">
+        <div class="col-12">
           <p>
-            <span class="fw-800">nom de l'entreprise : </span
-            >{{ customer ? customer.customerCompany : "" }}
-          </p>
-          <p>
-            <span class="fw-800">adrresse du client : </span
-            >{{ customer ? customer.customerAddress : "" }}
+            <span class="fw-800">intitulé de la mission : </span
+            >{{ mission ? mission.missionTitle : "" }}
           </p>
         </div>
-        <div class="col">
+        <div class="col-12">
+          <p>
+            <span class="fw-800">description de la mission : </span
+            >{{ mission ? mission.missionDescription : "" }}
+          </p>
+        </div>
+        <div class="col-6">
+          <p>
+            <span class="fw-800">client de la mission : </span
+            >{{ mission ? customerService.getCustomerById(mission.customerId).customerCompany : "" }}
+          </p>
+        </div>
+        <div class="col-6">
           <p>
             <span class="fw-800">email du client : </span
-            >{{ customer ? customer.customerEmail : "" }}
+            >{{ mission ? customerService.getCustomerById(mission.customerId).customerEmail : "" }}
           </p>
+        </div>
+        <div class="col-6">
           <p>
-            <span class="fw-800">téléphone du client : </span
-            >{{ customer ? customer.customerPhone : "" }}
+            <span class="fw-800">Début de la mission : </span
+            >{{ mission ? mission.missionStartDate : "" }}
+          </p>
+        </div>
+        <div class="col-6">
+          <p>
+            <span class="fw-800">Fin de la mission : </span
+            >{{ mission ? mission.missionEndDate : "" }}
           </p>
         </div>
       </div>
@@ -39,63 +53,65 @@
         </button>
       </div>
     </div>
-    <modals-container @close="updateCustomer" />
+    <modals-container @close="updateMission" />
   </div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar";
-import EditCustomer from "@/components/modals/EditCustomer";
+import EditMission from "@/components/modals/EditMission";
 import ToastService from "@/services/toast.service";
-import CustomerService from "@/services/customer.service";
+import MissionService from "@/services/mission.service";
 import DeleteConfirmation from "@/components/modals/DeleteConfirmation";
+import CustomerService from "@/services/customer.service";
 
 export default {
-  name: "CustomerDetails",
+  name: "MissionDetails",
   components: { Navbar },
   data: () => {
     return {
       currentUser: null,
       id: null,
-      customer: null,
+      mission: null,
       toastService: new ToastService(),
+      missionService: new MissionService(),
       customerService: new CustomerService()
     };
   },
   beforeMount() {
     this.currentUser = JSON.parse(localStorage.currentUser);
     this.id = this.$router.currentRoute.params.id;
-    this.customer = this.customerService.getCustomerById(this.id);
-    if (this.customer.userId !== this.currentUser.id) {
+    this.mission = this.missionService.getMissionById(this.id);
+    if (this.mission.userId !== this.currentUser.id) {
       this.toastService.showToast(
         this,
         "Vous n'etes pas autorisé a voir cette page",
         "toast-danger",
         "Ok"
       );
-      this.$router.push({ name: "Customers" });
+      this.$router.push({ name: "Missions" });
     }
   },
   methods: {
-    updateCustomer(result) {
+    updateMission(result) {
       if (result && result.mustDeleted) {
-        this.customerService.deleteCustomer(result.value.id);
+        this.missionService.deleteMission(result.value.id);
         this.toastService.showToast(
           this,
-          "ce client a bien été supprimé",
+          "cette mission a bien été supprimée",
           "toast-success",
           "Ok"
         );
-        this.$router.push({ name: "Customers" });
+        this.$router.push({ name: "Missions" });
       } else if (result) {
-        this.customer = result;
+        this.mission = result;
       }
     },
     showEditModal() {
       this.$modal.show(
-        EditCustomer,
+        EditMission,
         {
-          customer: { ...this.customer }
+          mission: { ...this.mission }
         },
         {
           adaptive: true,
@@ -109,8 +125,8 @@ export default {
         DeleteConfirmation,
         {
           item: {
-            type: "ce client",
-            value: { ...this.customer },
+            type: "cette mission",
+            value: { ...this.mission },
             mustDeleted: false
           }
         },
@@ -126,7 +142,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.customer-details {
+.mission-details {
   width: 100vw;
   min-height: 100vh;
   background: url("../assets/images/bg-tables.png") top center;

@@ -2,7 +2,6 @@ import router from "../../router";
 
 import EditCustomer from '../../components/modals/EditCustomer.vue'
 import DeleteConfirmation from '../../components/modals/DeleteConfirmation.vue'
-import CustomerService from '../../services/customer.service'
 
 export default function () {
   return {
@@ -42,7 +41,7 @@ export default function () {
         prepareFunction: (value: any, modal: any) => {
           modal.show(DeleteConfirmation, {
             item: {
-              type: "client",
+              type: "ce client",
               value: {...value},
               mustDeleted: false
             }

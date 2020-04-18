@@ -21,6 +21,8 @@ password: admin
 
 this is not an administration account. It's just a test account.
 
+the first user that you will create with the registration form will also have already registered data to be able to make tests.
+
 ## More informations
 
 this is a student project for DVIC (De Vinci Innovation Center). With this monitoring app you can create and manage customers and missions. Statistics will be coming later.

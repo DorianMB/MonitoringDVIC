@@ -1,6 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Connexion from "../views/Connexion.vue";
+import Inscription from "../views/Inscription.vue";
+import ConnectedHome from "../views/ConnectedHome.vue";
+import Customers from "../views/Customers.vue";
+import CustomerDetails from "../views/CustomerDetails.vue";
+import Missions from "../views/Missions.vue";
+import MissionDetails from "../views/MissionDetails.vue";
 
 Vue.use(VueRouter);
 
@@ -11,18 +18,65 @@ const routes = [
     component: Home
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    path: "/connexion",
+    name: "Connexion",
+    component: Connexion
+  },
+  {
+    path: "/inscription",
+    name: "Inscription",
+    component: Inscription
+  },
+  {
+    path: "/homepage",
+    name: "ConnectedHome",
+    component: ConnectedHome,
+    beforeEnter: (to:any, from:any, next:any) => {
+      if (!localStorage.currentUser) next({ name: 'Connexion' });
+      else next();
+    }
+  },
+  {
+    path: "/customers",
+    name: "Customers",
+    component: Customers,
+    beforeEnter: (to:any, from:any, next:any) => {
+      if (!localStorage.currentUser) next({ name: 'Connexion' });
+      else next();
+    }
+  },
+  {
+    path: "/customer/:id",
+    name: "CustomerDetails",
+    component: CustomerDetails,
+    beforeEnter: (to:any, from:any, next:any) => {
+      if (!localStorage.currentUser) next({ name: 'Connexion' });
+      else next();
+    }
+  },
+  {
+    path: "/missions",
+    name: "Missions",
+    component: Missions,
+    beforeEnter: (to:any, from:any, next:any) => {
+      if (!localStorage.currentUser) next({ name: 'Connexion' });
+      else next();
+    }
+  },
+  {
+    path: "/mission/:id",
+    name: "MissionDetails",
+    component: MissionDetails,
+    beforeEnter: (to:any, from:any, next:any) => {
+      if (!localStorage.currentUser) next({ name: 'Connexion' });
+      else next();
+    }
   }
 ];
 
 const router = new VueRouter({
-  routes
+  linkExactActiveClass: 'btn-navbar-active',
+  routes: routes
 });
 
 export default router;

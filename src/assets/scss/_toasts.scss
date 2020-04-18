@@ -1,0 +1,48 @@
+.toasted.outline{
+  border: 1px solid $primary !important;
+  font-family: "Roboto", sans-serif;
+  color: $primary !important;
+  a {
+    font-family: "Roboto", sans-serif;
+    color: $primary !important;
+  }
+
+  &.toast-success {
+    border: 1px solid $success !important;
+    background-color: $success !important;
+    color: $white !important;
+    a {
+      color: $white !important;
+    }
+  }
+  &.toast-danger {
+    border: 1px solid $danger !important;
+    background-color: $danger !important;
+    color: $white !important;
+    a {
+      color: $white !important;
+    }
+  }
+  &.toast-warn {
+    border: 1px solid $warn !important;
+    background-color: $warn !important;
+    color: $white !important;
+    a {
+      color: $white !important;
+    }
+  }
+  &.toast-info {
+    border: 1px solid $info !important;
+    background-color: $info !important;
+    color: $white !important;
+    a {
+      color: $white !important;
+    }
+  }
+}
+
+.toasted-container.top-center.full-width{
+  @media (min-width: 800px) {
+    max-width: 50%;
+  }
+}

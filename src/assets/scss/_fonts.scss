@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.pattaya {
+  font-family: 'Pattaya', sans-serif;
+}
+
+body {
+  @extend .roboto;
+  font-size: 12px !important;
+}
+
+h1 {
+  @extend .pattaya;
+  color: black;
+  font-size: 32px !important;
+}
+
+h2 {
+  @extend .roboto;
+  color: black;
+  font-size: 24px !important;
+}
+
+h3 {
+  @extend .roboto;
+  color: $gray;
+  font-size: 18px !important;
+  text-transform: uppercase;
+}
+
+.color{
+  &-primary {
+    color: $primary !important;
+  }
+  &-secondary {
+    color: $secondary !important;
+  }
+  &-white {
+    color: white !important;
+  }
+  &-black {
+    color: black !important;
+  }
+}
+
+@mixin fs {
+  $i: 8;
+  @while $i < 91 {
+    .fs-#{$i} {
+      font-size: #{$i}px;
+    }
+    $i: $i + 1;
+  }
+}
+
+@include fs;
+
+@mixin fw {
+  $i: 100;
+  @while $i < 1000 {
+    .fw-#{$i} {
+      font-weight: #{$i};
+    }
+    $i: $i + 100;
+  }
+}
+
+@include fw;

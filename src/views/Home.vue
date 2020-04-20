@@ -5,9 +5,9 @@
       <img class="mar-t-14" src="../assets/images/logo-white.png" />
       <div class="row mar-t-16">
         <p class="offset-2 col-8 text-center color-white fs-16">
-          Le site de monitoring d’entreprise spécialement consue pour les PME et
-          les auto-entrepreneurs. Un outil ergonomique et facile a prendre en
-          main. Renseignez vos client et vos missions pour un suivi centralisé.
+          Le site de monitoring d’entreprise spécialement conçue pour les PME et
+          les auto-entrepreneurs. Un outil ergonomique et facile à prendre en
+          main. Renseignez vos clients et vos missions pour un suivi centralisé.
           Suivre l’évolution de votre entreprise n’aura jamais été aussi simple
           !
         </p>
@@ -50,7 +50,7 @@
           />
           <h2>Statistiques</h2>
           <p class="text-center">
-            Graces aux statistiques fournis par Easy Monitoring, il n’aura
+            Grâce aux statistiques fournies par Easy Monitoring, il n’aura
             jamais été aussi simple de suivre l’évolution de votre entreprise.
             Suivez vos missions, vos dépenses et vos rentrés d’argents a tout
             moment.
@@ -63,7 +63,7 @@
           />
           <h2>Essaie gratuit</h2>
           <p class="text-center">
-            En plus d’être un outils ergonomiques et simple d’utilisation, Easy
+            En plus d’être un outils ergonomique et simple d’utilisation, Easy
             Monitoring est très abordable. Venez tester notre solution, le
             premier mois est gratuit !
           </p>

@@ -275,7 +275,7 @@ export default {
       if (resUser || resForm) {
         this.toastService.showToast(
           this,
-          "Toute les informations n'ont pas été remplies",
+          "Toutes les informations n'ont pas été remplies",
           "toast-danger",
           "Ok"
         );
@@ -295,7 +295,7 @@ export default {
         localStorage.accounts = JSON.stringify(accounts);
         this.toastService.showToast(
           this,
-          "Votre compte viens d'être créé",
+          "Votre compte vient d'être créé",
           "toast-success",
           "Ok"
         );

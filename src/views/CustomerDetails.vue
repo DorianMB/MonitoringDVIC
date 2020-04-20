@@ -69,7 +69,7 @@ export default {
     if (this.customer.userId !== this.currentUser.id) {
       this.toastService.showToast(
         this,
-        "Vous n'etes pas autorisé a voir cette page",
+        "Vous n'êtes pas autorisé à voir cette page",
         "toast-danger",
         "Ok"
       );

@@ -63,7 +63,7 @@ export default {
       if (res) {
         this.toastService.showToast(
           this,
-          "Connection réussie",
+          "Connexion réussie",
           "toast-success",
           "Ok"
         );

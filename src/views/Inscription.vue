@@ -155,9 +155,9 @@
               @click="priceChoice = 'month2'"
               :class="priceChoice === 'month2' ? 'price-choice' : ''"
             >
-              <h3>Auto-entrepreneur</h3>
+              <h3>PME</h3>
               <div>
-                <span class="color-primary fs-24">25</span>
+                <span class="color-primary fs-24">100</span>
                 <span class="color-black fs-18"> € </span>
                 <span class="color-secondary fs-11">/ mois</span>
               </div>
@@ -171,7 +171,7 @@
             >
               <h3>Auto-entrepreneur</h3>
               <div>
-                <span class="color-primary fs-24">25</span>
+                <span class="color-primary fs-24">300</span>
                 <span class="color-black fs-18"> € </span>
                 <span class="color-secondary fs-11">/ année</span>
               </div>
@@ -181,9 +181,9 @@
               @click="priceChoice = 'year2'"
               :class="priceChoice === 'year2' ? 'price-choice' : ''"
             >
-              <h3>Auto-entrepreneur</h3>
+              <h3>PME</h3>
               <div>
-                <span class="color-primary fs-24">25</span>
+                <span class="color-primary fs-24">1200</span>
                 <span class="color-black fs-18"> € </span>
                 <span class="color-secondary fs-11">/ année</span>
               </div>
@@ -275,7 +275,7 @@ export default {
       if (resUser || resForm) {
         this.toastService.showToast(
           this,
-          "Toute les informations n'ont pas été remplies",
+          "Toutes les informations n'ont pas été remplies",
           "toast-danger",
           "Ok"
         );
@@ -295,7 +295,7 @@ export default {
         localStorage.accounts = JSON.stringify(accounts);
         this.toastService.showToast(
           this,
-          "Votre compte viens d'être créé",
+          "Votre compte vient d'être créé",
           "toast-success",
           "Ok"
         );
